@@ -27,12 +27,13 @@ function mostrarDatos(){
 alert(topUserPostsRef);
 } 
 
+var datos = ''
 
-document.write(snapshot.val())
+document.write(datos)
 
 var starCountRef = firebase.database().ref('posts/');
 starCountRef.on('value', function(snapshot) {
-  updateStarCount(snapshot.val());
+  updateStarCount(datos.val());
 
 
 });
