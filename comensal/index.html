@@ -32,7 +32,7 @@ var datos = '';
 document.write(datos);
 
 var starCountRef = firebase.database().ref('posts/');
-starCountRef.on('value', function(snapshot) {
+starCountRef.on('value', function() {
   updateStarCount(datos.val());
 
 
