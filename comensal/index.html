@@ -27,9 +27,9 @@ function mostrarDatos(){
 alert(topUserPostsRef);
 } 
 
-var datos = ''
+var datos = '';
 
-document.write(datos)
+document.write(datos);
 
 var starCountRef = firebase.database().ref('posts/');
 starCountRef.on('value', function(snapshot) {
