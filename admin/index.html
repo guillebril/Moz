@@ -25,7 +25,6 @@
     <link rel="stylesheet" href="css/material-modal.min.css">
     <link rel="stylesheet" href="styles.css">
     <style>
-
     #view-source {
         position: fixed;
         display: block;
@@ -35,30 +34,26 @@
         margin-bottom: 40px;
         z-index: 900;
     }
-    .modal__content--active {
-    padding-left: 1rem;
-    padding-right: 0;
-    padding-bottom: 0;
-    padding-top: 1rem;}
-
-    .modal__text{ 
-    padding-bottom: 0 }
+    
+    .modal__text {
+        padding-bottom: 0
+    }
     </style>
 </head>
-
 <script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
-    <script>
-    // Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyBTiGB3o_EzPxEIEBcDkaZVpWRgfdNQYOM",
-        authDomain: "mozo-c1716.firebaseapp.com",
-        databaseURL: "https://mozo-c1716.firebaseio.com",
-        projectId: "mozo-c1716",
-        storageBucket: "mozo-c1716.appspot.com",
-        messagingSenderId: "1094461273343"
-    };
-    firebase.initializeApp(config);
-    </script>
+<script>
+// Initialize Firebase
+var config = {
+    apiKey: "AIzaSyBTiGB3o_EzPxEIEBcDkaZVpWRgfdNQYOM",
+    authDomain: "mozo-c1716.firebaseapp.com",
+    databaseURL: "https://mozo-c1716.firebaseio.com",
+    projectId: "mozo-c1716",
+    storageBucket: "mozo-c1716.appspot.com",
+    messagingSenderId: "1094461273343"
+};
+firebase.initializeApp(config);
+</script>
+
 <body>
     <div class="content">
         <div id="modal" class="modal modal__bg">
@@ -68,33 +63,35 @@
                         <div class="modal__title">
                             <h2 class="modal__title-text">Nuevo Restaurante</h2>
                         </div>
-                        
                     </div>
                     <div class="modal__text">
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" type="text" id="sample3">
-                            <label class="mdl-textfield__label" for="sample3">Nombre</label>
+                        <div class="mdl-grid">
+                            <div class="mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet mdl-cell--middle">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ">
+                                    <input class="mdl-textfield__input " type="text" id="sample3">
+                                    <label class="mdl-textfield__label" for="sample3">Nombre</label>
+                                </div>
+                            </div>
+                            <div class="mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet  mdl-cell--middle">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input " type="text" id="sample3">
+                                    <label class="mdl-textfield__label" for="sample3">Dirección</label>
+                                </div>
+                            </div>
+                            <div class="mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet mdl-cell--middle">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4">
+                                    <label class="mdl-textfield__label" for="sample4">Telefono</label>
+                                    <span class="mdl-textfield__error">Input is not a number!</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" type="text" id="sample3">
-                            <label class="mdl-textfield__label" for="sample3">Dirección</label>
+                        <div class="modal__footer">
+                            <div class="mdl-dialog__actions">
+                                <button type="button" class="mdl-button">Agregar</button>
+                                <button type="button" class="mdl-button close modal__close">Cancelar</button>
+                            </div>
                         </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4">
-                            <label class="mdl-textfield__label" for="sample4">Telefono</label>
-                            <span class="mdl-textfield__error">Input is not a number!</span>
-                        </div>
-                          <div class="modal__footer">
-
-      <div class="mdl-dialog__actions">
-    
-      <button type="button" class="mdl-button close modal__close">Cancelar</button>
-        <button type="button" class="mdl-button">Agregar</button>
-    </div>
-
-
-                </div>
-               
                     </div>
                 </div>
             </div>
@@ -158,57 +155,26 @@
         <main class="mdl-layout__content mdl-color--grey-100">
             <div class="mdl-grid demo-content">
                 <div class="demo-charts   mdl-cell mdl-cell--4-col mdl-grid">
-                    <table id="tablaResul" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable  mdl-shadow--2dp">
+                    <table id="tablaResul" class="mdl-data-table mdl-shadow--2dp">
                         <thead>
                             <tr>
+                                <th>
+                                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-data-table__select" for="table-header">
+                                        <input type="checkbox" id="table-header" class="mdl-checkbox__input" />
+                                    </label>
+                                </th>
                                 <th class="mdl-data-table__cell--non-numeric">Nombre</th>
                                 <th>Dirección</th>
-
                             </tr>
                         </thead>
                         <tbody>
-
-
-
-<script type="text/javascript">
-
-// function mostrarDatos(){
-    var ref = firebase.database().ref("restaurantes/");
-         ref.once('value', function(snapshot) {
-              snapshot.forEach(function(childSnapshot) {
-                var childKey = childSnapshot.key;
-
-                var childData = childSnapshot.val().name;
-          
-
-                  document.getElementById('tablaResul').innerHTML += '<tr> <td class="mdl-data-table__cell--non-numeric"></td> <td>' +  childData + '</td> <td class="mdl-data-table__cell--non-numeric">' + childKey+ '</td></tr>'
-
-
-              });
-            });
-
-
-
-       console.log(jamon);
-
-    ref.orderByChild("restaurantes").on("value", function(snapshot) {
-        restaurantesKeys.push(snapshot.key);
-        restaurantesNames.push(snapshot.val().name);
-
-    }, function(error) {
-        console.log("Error: " + error.code);
-    });
-    
-    for (x in restaurantesNames) {
-        document.getElementById('tablaResul').innerHTML += '<tr> <td class="mdl-data-table__cell--non-numeric">' + restaurantesNames[x] + '</td> <td class="mdl-data-table__cell--non-numeric">' + restaurantesKeys[x] + '</td></tr>';
-    }
-
- 
-
-</script>
-
-
-
+                            <tr>
+                                <td>
+                                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-data-table__select" for="9">
+                                        <input type="checkbox" id="9" class="mdl-checkbox__input" />
+                                    </label>'</td>
+                                <td class="mdl-data-table__cell--non-numeric">Acrylic (Transparent)</td>
+                                <td>25</td>
                             </tr>
                         </tbody>
                     </table>
@@ -218,11 +184,28 @@
     </div>
     <a href="#" id="view-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white modal__trigger" data-modal="#modal">Agregar Nuevo</a>
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-    
-
     <script src="js/material-modal.min.js"></script>
 </body>
+<script type="text/javascript">
+// function mostrarDatos(){
+var ref = firebase.database().ref("restaurantes/");
+ref.once('value', function(snapshot) {
+    snapshot.forEach(function(childSnapshot) {
+        var childKey = childSnapshot.key;
+        var childData = childSnapshot.val().name;
+        var table = document.getElementById('tablaResul');
+        var row = table.insertRow(-1);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        cell2.className = "mdl-data-table__cell--non-numeric"
+        var cell3 = row.insertCell(2);
+        cell1.innerHTML = '<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-data-table__select" for="' + childKey + ' "> <input type="checkbox" id="' + childKey + ' " class="mdl-checkbox__input" /></label>'
+        cell2.innerHTML = childData;
+        cell3.innerHTML = childKey;
+        componentHandler.upgradeDom();
+    });
 
-
+});
+</script>
 
 </html>
