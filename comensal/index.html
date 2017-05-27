@@ -6,9 +6,29 @@
 <body>
 <h1>Hello world!</h1>
 
+
+<div onclick="writeUserData('Begreen', 'pocho', 'jajaja@jaja', 'google.com')"> Hello</div>
+
+
+<script type="text/javascript">
+	
+	function writeUserData(userId, name, email, imageUrl) {
+  firebase.database().ref('users/' + userId).set({
+    username: name,
+    email: email,
+    profile_picture : imageUrl
+  });
+}
+
+</script>
+
+
+
+
 </body>
 
 </html>
+
 
 <script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
 <script>
