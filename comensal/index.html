@@ -7,34 +7,46 @@
 <h1>Hello world!</h1>
 
 
-<div onclick="writeUserData('Begreen', 'pocho', 'jajaja@jaja', 'google.com')"> SET 'Begreen', 'pocho', 'jajaja@jaja', 'google.com'</div>
+<div onclick="cargaRestaurante('BeGreen','Espania 1200')"> cargaRestaurante('BeGreen','Espania 1200')</div>
+<div onclick="cargaCategoria('-Kl7xoOS5k1k2Ui_P3-1','Entradas')"> cargaCategoria('','Bebidas')</div>
+<div onclick="cargaProductos('-Kl7xoOS5k1k2Ui_P3-1','-Kl7zfzQ2EW8kByw1etg','Papas Rústicas','50','1 porción')"> cargaProductos('restauranteID','catID','Cerveza Patagonia','75','1 pinta')</div>
 
 
 <button onclick="mostrarDatos()"> Ver</button>
+<div onclick="cargaCerveza('-Kl7nk7drN3S6p7rMbiL')"> Cargar menu</div>
+<div id='log'></div>
 
 <script type="text/javascript">
-	
-	function writeUserData(userId, name, email, imageUrl) {
-  firebase.database().ref('users/' + userId).set({
-    username: name,
-    email: email,
-    profile_picture : imageUrl
-  });
-}
-
-function mostrarDatos(){
-  var referenciaBase = firebase.database().ref('/users/Begreen/username');
- 
- referenciaBase.on("value", function(snapshot) {
-   document.write(snapshot.val());
-}, function (error) {
-   console.log("Error: " + error.code) ;
-});
-
-
-};
-
-
+	//CARGA RESTAURANTES
+    function cargaRestaurante(name, direccion) {
+    var restaurantesRef = firebase.database().ref("restaurantes/");
+    restaurantesRef.push(
+    {
+      "name":name,
+      "direccion":direccion,
+    }
+              );
+  };
+  //CARGA CATEGORIAS
+    function cargaCategoria(restauranteID,nameCat) {
+    var Ref = firebase.database().ref("restaurantes/"+restauranteID+ "/categorias");
+          Ref.push(
+    {
+      "name": nameCat,
+    }
+            );
+        };
+  //CARGA PRODUCTOS
+    function cargaProductos(restauranteID,catID,nameProduct,price,size) {
+    var Ref = firebase.database().ref("restaurantes/"+restauranteID+ "/categorias/"+catID+"/productos/");
+          Ref.push(
+    {
+      "name": nameProduct,
+      "price": price,
+      "size":size,
+    }
+            );
+        };
 
 
 </script>

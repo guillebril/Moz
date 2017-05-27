@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+
+	<script type="text/javascript">
+	//CARGA RESTAURANTES
+    function cargaRestaurante(name, direccion) {
+    var restaurantesRef = firebase.database().ref("restaurantes/");
+    restaurantesRef.push(
+    {
+      "name":name,
+      "direccion":direccion,
+    }
+              );
+  };
+  //CARGA CATEGORIAS
+    function cargaCategoria(restauranteID,nameCat) {
+    var Ref = firebase.database().ref("restaurantes/"+restauranteID+ "/categorias");
+          Ref.push(
+    {
+      "name": nameCat,
+    }
+            );
+        };
+  //CARGA PRODUCTOS
+    function cargaProductos(restauranteID,catID,nameProduct,price,size) {
+    var Ref = firebase.database().ref("restaurantes/"+restauranteID+ "/categorias/"+catID+"/productos/");
+          Ref.push(
+    {
+      "name": nameProduct,
+      "price": price,
+      "size":size,
+    }
+            );
+        };
+
+
+</script>
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>
