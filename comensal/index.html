@@ -28,6 +28,17 @@ alert(topUserPostsRef);
 } 
 
 
+document.write(snapshot.val())
+
+var starCountRef = firebase.database().ref('posts/');
+starCountRef.on('value', function(snapshot) {
+  updateStarCount(snapshot.val());
+
+
+});
+
+
+
 
 </script>
 
