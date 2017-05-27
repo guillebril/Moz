@@ -10,7 +10,7 @@
 <div onclick="writeUserData('Begreen', 'pocho', 'jajaja@jaja', 'google.com')"> SET 'Begreen', 'pocho', 'jajaja@jaja', 'google.com'</div>
 
 
-<button onclick="alert(starCountRef);"> Ver</button>
+<button onclick="alert(topUserPostsRef);"> Ver</button>
 
 <script type="text/javascript">
 	
@@ -23,10 +23,7 @@
 }
 
 
-var starCountRef = firebase.database().ref('users/');
-starCountRef.on('value', function(snapshot) {
-  updateStarCount(postElement, snapshot.val());
-});
+var topUserPostsRef = firebase.database().ref('/users/');
 
 
 
