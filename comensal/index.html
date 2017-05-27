@@ -10,7 +10,7 @@
 <div onclick="writeUserData('Begreen', 'pocho', 'jajaja@jaja', 'google.com')"> SET 'Begreen', 'pocho', 'jajaja@jaja', 'google.com'</div>
 
 
-<button onclick="alert(topUserPostsRef);"> Ver</button>
+<button onclick="mostrarDatos()"> Ver</button>
 
 <script type="text/javascript">
 	
@@ -22,8 +22,10 @@
   });
 }
 
-
-var topUserPostsRef = firebase.database().ref('/users/');
+function mostrarDatos(){
+  var topUserPostsRef = firebase.database().ref('/users/');
+alert(topUserPostsRef);
+} 
 
 
 
