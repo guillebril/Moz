@@ -23,20 +23,16 @@
 }
 
 function mostrarDatos(){
-  var topUserPostsRef = firebase.database().ref('/users/');
-alert(topUserPostsRef);
-} 
-
-var datos = '';
-
-document.write(datos);
-
-var starCountRef = firebase.database().ref('posts/');
-starCountRef.on('value', function() {
-  updateStarCount(datos.val());
-
-
+  var referenciaBase = firebase.database().ref('/users/Begreen/username');
+ 
+ referenciaBase.on("value", function(snapshot) {
+   document.write(snapshot.val());
+}, function (error) {
+   console.log("Error: " + error.code) ;
 });
+
+
+};
 
 
 
