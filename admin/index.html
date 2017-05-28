@@ -68,19 +68,19 @@ firebase.initializeApp(config);
                         <div class="mdl-grid">
                             <div class="mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet mdl-cell--middle">
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ">
-                                    <input class="mdl-textfield__input " type="text" id="sample3">
+                                    <input class="mdl-textfield__input " type="text" id="rest">
                                     <label class="mdl-textfield__label" for="sample3">Nombre</label>
                                 </div>
                             </div>
                             <div class="mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet  mdl-cell--middle">
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input " type="text" id="sample3">
+                                    <input class="mdl-textfield__input " type="text" id="dir">
                                     <label class="mdl-textfield__label" for="sample3">Dirección</label>
                                 </div>
                             </div>
                             <div class="mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet mdl-cell--middle">
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4">
+                                    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="tel">
                                     <label class="mdl-textfield__label" for="sample4">Telefono</label>
                                     <span class="mdl-textfield__error">Input is not a number!</span>
                                 </div>
@@ -88,7 +88,7 @@ firebase.initializeApp(config);
                         </div>
                         <div class="modal__footer">
                             <div class="mdl-dialog__actions">
-                                <button type="button" class="mdl-button">Agregar</button>
+                                <button type="button" class="mdl-button modal__close" onclick="nuevoRestaurante()"> Agregar </button>
                                 <button type="button" class="mdl-button close modal__close">Cancelar</button>
                             </div>
                         </div>
@@ -187,9 +187,9 @@ firebase.initializeApp(config);
     <script src="js/material-modal.min.js"></script>
 </body>
 <script type="text/javascript">
-// function mostrarDatos(){
-var ref = firebase.database().ref("restaurantes/");
-ref.once('value', function(snapshot) {
+// function mostrarDatos
+var ref = firebase.database().ref("/");
+ref.once('child_added', function(snapshot) {
     snapshot.forEach(function(childSnapshot) {
         var childKey = childSnapshot.key;
         var childData = childSnapshot.val().name;
@@ -206,6 +206,19 @@ ref.once('value', function(snapshot) {
     });
 
 });
+
+function nuevoRestaurante() {
+    var rest = document.getElementById('rest').value;
+    var dir = document.getElementById('dir').value;
+    var tel = document.getElementById('tel').value;
+    var restaurantesRef = firebase.database().ref("restaurantes/");
+    restaurantesRef.push({
+        "name": document.getElementById('rest').value,
+        "direccion": document.getElementById('rest').value,
+        "telefono": document.getElementById('rest').value,
+
+    });
+}
 </script>
 
 </html>
