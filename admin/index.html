@@ -188,8 +188,8 @@ firebase.initializeApp(config);
 </body>
 <script type="text/javascript">
 // function mostrarDatos
-var ref = firebase.database().ref("/");
-ref.once('child_added', function(snapshot) {
+var ref = firebase.database().ref("restaurantes/");
+ref.on('value', function(snapshot) {
     snapshot.forEach(function(childSnapshot) {
         var childKey = childSnapshot.key;
         var childData = childSnapshot.val().name;
