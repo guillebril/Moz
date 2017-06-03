@@ -35,10 +35,9 @@
 <script type="text/javascript">
 
 
-     // function mostrarDatos(){
+      function mostrarDatos(){
         var ref = firebase.database().ref("restaurantes/");
          var restaurantesKeys = [],restaurantesNames = [];
-sleep(2000);
         ref.orderByChild("restaurantes").on("child_added", function(snapshot) {
         restaurantesKeys.push(snapshot.key);
         restaurantesNames.push(snapshot.val().name);
@@ -46,10 +45,10 @@ sleep(2000);
           }, function (error) {
              console.log("Error: " + error.code) ;
           });       
-        //crearTabla(restaurantesKeys,restaurantesNames);
-     // } 
+        crearTabla(restaurantesKeys,restaurantesNames);
+      } 
     
-     // function crearTabla(restaurantesKeys,restaurantesNames) {
+      function crearTabla(restaurantesKeys,restaurantesNames) {
       var tabla = '<tr><td>Names</td><td>Keys</td></tr>';
       for (x in restaurantesNames) 
       { 
@@ -57,7 +56,7 @@ sleep(2000);
       }
       console.log(tabla);
       document.getElementById('tablaResul').innerHTML = tabla;
-      //}
+      }
 
 
 
