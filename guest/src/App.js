@@ -1,8 +1,7 @@
 import React, { Component }
 from 'react';
-import logo from './logo.svg';
 import './App.css';
-import base from './rebase'
+//import base from './rebase'
 import Tabs from './components/tabs'
 
 class App extends Component {
@@ -12,8 +11,11 @@ class App extends Component {
       restaurantes: []
     };
   }
-
-
+  render() {
+    return(
+      <Tabs/>
+    )
+  }
 }
 
 export default App;
