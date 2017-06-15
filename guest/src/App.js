@@ -1,8 +1,8 @@
 import React, { Component }
 from 'react';
 import './App.css';
-
-import Pestana from './components/pestana'
+//import base from './rebase'
+import Tabs from './components/tabs'
 
 class App extends Component {
   constructor(props) {
@@ -13,7 +13,7 @@ class App extends Component {
   }
   render() {
     return(
-      <Pestana/>
+      <Tabs/>
     )
   }
 }
