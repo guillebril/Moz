@@ -4,9 +4,12 @@
   "private": true,
   "dependencies": {
     "firebase": "^4.1.0",
+    "material-ui": "^1.0.0-alpha.16",
     "re-base": "^3.0.1",
     "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "react-dom": "^15.5.4",
+    "react-swipeable-views": "^0.12.3",
+    "react-tap-event-plugin": "^2.0.1"
   },
   "devDependencies": {
     "react-scripts": "0.9.5"
