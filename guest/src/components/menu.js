@@ -7,36 +7,50 @@ export default class Menu extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      restaurantes: []
+      restaurante: [],
+      productos: {}
     };
   }
 
   componentDidMount() {
     // convierto el objeto a array y le hago a doble binding
-    base.syncState('restaurantes/', {
+    base.bindToState('restaurantes/oconnells/menu', {
       context: this,
-      state: 'restaurantes',
+      state: 'restaurante',
       asArray: true
     });
   }
 
   render() {
 
-    var restaurantes = this.state.restaurantes.map((item, index) => {
-      return(
-        <div key={item.key} className='producto_item'>
-          <div>
-          <div className='producto_item_nombre'>{item.name}</div>
-          <div className='producto_item_descripcion'>Jamon, queso, tomate,lechuga Lorem ipsu sit emet Mayonesa</div>
-          </div>
-          <div className='producto_item_precio'>$32</div>
+      var restaurante = this.state.restaurante.map((categoria, index) => {
+      console.log(JSON.stringify(categoria.productos, null, 4))
+
+        var productos =  Object.values(categoria.productos).map(producto => {
+            return(
+            <div key={producto.key} className='producto_item'>
+              <div className='producto_item_nombre'>{producto.nombre}</div>
+              <div className='producto_item_descripcion'>{producto.descripcion}</div>
+              <div className='producto_item_precio'>${producto.precio}</div>
+            </div>
+          )
+        })
+
+      return (
+        <div key={categoria.key}>
+            <div className='categoria_titulo'>
+              {categoria.nombre}
+            </div>
+            <div>
+              {productos}
+            </div>
         </div>
       )
-    })
+  })
 
     return(
       <div>
-          {restaurantes}
+          {restaurante}
       </div>
 
     );

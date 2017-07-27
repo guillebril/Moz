@@ -6,8 +6,9 @@
 }
 
 .producto_item {
+  flex-wrap: wrap;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   padding: 10px;
   border-bottom: 1px solid #ddd;
@@ -15,11 +16,13 @@
 
 .producto_item_nombre {
   font-weight: 600;
+  flex-basis: 70%;
   padding-bottom: 5px;
   padding-top: 5px;
 }
 
 .producto_item_descripcion {
+  flex-basis: 80%;
   color: #757575;
   padding-bottom: 5px;
   font-size: 14px;
@@ -30,4 +33,17 @@
   font-weight: 300;
   letter-spacing: 1px;
   padding-left: 25px;
+  align-self: center;
+}
+
+
+.categoria_titulo{
+padding-top: 15px;
+padding-bottom: 15px;
+padding-left: 15px;
+letter-spacing: 0.5px;
+-webkit-font-smoothing: subpixel-antialiased;
+text-transform: uppercase;
+color: #555;
+background-color: #eee;
 }

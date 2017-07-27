@@ -9,10 +9,7 @@ import Menu from './menu';
 const styles = {
   slide: {
     marginTop: 48,
-    minHeight: 500,
-    paddingLeft: 15,
-    paddingRight: 15,
-    paddingTop: 10,
+    minHeight: 500, 
     paddingBottom: 15,
 
   },
