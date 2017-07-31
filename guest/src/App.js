@@ -2,7 +2,16 @@ import React, { Component }
 from 'react';
 import './App.css';
 
-import Pestana from './components/pestana'
+import { MuiThemeProvider } from 'material-ui/styles';
+
+
+import Pestana from './components/pestana';
+
+
+
+
+
+
 
 class App extends Component {
   constructor(props) {
@@ -11,9 +20,17 @@ class App extends Component {
       restaurantes: []
     };
   }
-  render() {
+
+
+
+
+  render()
+   {
     return(
+      <MuiThemeProvider>
       <Pestana/>
+
+      </MuiThemeProvider>
     )
   }
 }

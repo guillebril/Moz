@@ -1,7 +1,6 @@
 import '../App.css';
 import React, { Component } from 'react';
 import Tabs, { Tab } from 'material-ui/Tabs';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import SwipeableViews from 'react-swipeable-views';
 import Menu from './menu';
 
@@ -9,7 +8,7 @@ import Menu from './menu';
 const styles = {
   slide: {
     marginTop: 48,
-    minHeight: 500, 
+    minHeight: 500,
     paddingBottom: 15,
 
   },
@@ -47,7 +46,6 @@ export default class Pestana extends Component {
     } = this.state;
 
     return(
-      <MuiThemeProvider>
         <div>
           <Tabs index={index} className="cabezal" fullWidth onChange={this.handleChange}>
             <Tab style={styles.cabezal}  label="Menu" />
@@ -68,7 +66,6 @@ export default class Pestana extends Component {
 
           </SwipeableViews>
         </div>
-      </MuiThemeProvider>
     );
   }
 }

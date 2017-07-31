@@ -22,7 +22,7 @@
 }
 
 .producto_item_descripcion {
-  flex-basis: 80%;
+  flex-basis: 75%;
   color: #757575;
   padding-bottom: 5px;
   font-size: 14px;
@@ -30,6 +30,7 @@
 
 .producto_item_precio {
   font-size: 18px;
+    flex-basis: 10%;
   font-weight: 300;
   letter-spacing: 1px;
   padding-left: 25px;
