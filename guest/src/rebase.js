@@ -19,18 +19,12 @@ if(usuario){
   //ya esta logueado
   console.log(navigator.userAgent)
   console.log('usuario logueado: ')
-
   console.log(JSON.stringify(usuario, null, 4))
-
 
 } else{
   //no esta logueado
-
   console.log('usuario NO logueado: ')
-
   auth.signInAnonymously();
-
 }
 })
-
 export default base;

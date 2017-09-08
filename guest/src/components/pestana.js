@@ -1,71 +1,93 @@
 import '../App.css';
 import React, { Component } from 'react';
-import Tabs, { Tab } from 'material-ui/Tabs';
-import SwipeableViews from 'react-swipeable-views';
+import base from '../rebase'
+
+import BottomNavigation, { BottomNavigationButton } from 'material-ui/BottomNavigation';
+import LocalDiningIcon from 'material-ui-icons/LocalDining';
+import BeerIcon from 'material-ui-icons/Beer';
+import ListIcon from 'material-ui-icons/List';
 import Menu from './menu';
+import Cuenta from './cuenta'
+import Paper from 'material-ui/Paper';
 
-
-const styles = {
-  slide: {
-    marginTop: 48,
-    minHeight: 500,
-    paddingBottom: 15,
-
-  },
-  slide1: {
-
-  },
-  slide2: {
-    backgroundColor: '#B3DC4A',
-  },
-
-
-};
 
 
 export default class Pestana extends Component {
-  state = {
-    index: 0,
-  };
 
-  handleChange = (event, value) => {
-    this.setState({
-      index: value,
-    });
-  };
+	state = {
+	value: 0,
+	restaurante: {},
+	pedidos: {},
+};
 
-  handleChangeIndex = (index) => {
-    this.setState({
-      index,
-    });
-  };
+	handleChange = (event, value) => {
+     this.setState({ value });
 
-  render() {
-    const {
-      index,
-    } = this.state;
+   };
 
-    return(
-        <div>
-          <Tabs index={index} className="cabezal" fullWidth onChange={this.handleChange}>
-            <Tab style={styles.cabezal}  label="Menu" />
-            <Tab label="Mi Cuenta" />
 
-          </Tabs>
-          <SwipeableViews index={index} onChangeIndex={this.handleChangeIndex}>
+	 componentDidMount( ) {
+		 // convierto el objeto a array y le hago a doble binding
+		 base.bindToState('restaurantes/oconnells/menu', {
+			 context: this,
+			 state: 'restaurante',
+			 asArray: true
+		 });
 
-            <div style={Object.assign({}, styles.slide, styles.slide1)}>
-              <Menu/>
-            </div>
-            <div style={Object.assign({}, styles.slide, styles.slide2)}>
-              slide n°2
-              <br />
-              <br />
+		 base.bindToState('restaurantes/oconnells/mesas/-KrZAqaw3YqtWTQIAcM7', {
+			 context: this,
+			 state: 'pedidos',
+			 asArray: true
+		 });
 
-            </div>
+	 }
 
-          </SwipeableViews>
-        </div>
+
+  ventana = () => {
+
+	 if (this.state.value === 0){
+		 return (
+			 <Menu  menu={this.state.restaurante} />
+		 )}
+		 if (this.state.value === 1){
+			 return (<Menu menu={this.state.restaurante}/>)
+
+		 } else {
+			 return (<Cuenta pedidos={this.state.pedidos}/>)
+		 }
+
+
+	 }
+
+
+
+	render()
+	 {
+
+    const { value } = this.state;
+    return (
+			<div>
+				<div style={{marginBottom: '64px'}}>
+				{this.ventana()}
+				</div>
+
+
+
+
+			      <BottomNavigation
+			        value={value}
+			        onChange={this.handleChange}
+			        showLabels={true}
+							style={{position: 'fixed', bottom: '0', width: '100%', boxShadow: '-1px 7px 20px 0px'}}>
+			        <BottomNavigationButton style={{display: 'grid'}}label="Bebidas" icon={<BeerIcon />}/>
+			        <BottomNavigationButton style={{display: 'grid'}} label="Comidas" icon={<LocalDiningIcon/>} />
+			        <BottomNavigationButton style={{display: 'grid'}} label="Cuenta" icon={<ListIcon />} />
+					</BottomNavigation>
+
+
+
+			</div>
     );
   }
-}
+
+	}
