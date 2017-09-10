@@ -25,7 +25,6 @@ export default class Cuenta extends Component {
 		})
 
 		return (
-
 			<div>{listaPedidos}</div>
 		)
 	}

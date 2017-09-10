@@ -8,7 +8,6 @@ import BeerIcon from 'material-ui-icons/Beer';
 import ListIcon from 'material-ui-icons/List';
 import Menu from './menu';
 import Cuenta from './cuenta'
-import Paper from 'material-ui/Paper';
 
 
 
@@ -70,9 +69,6 @@ export default class Pestana extends Component {
 				<div style={{marginBottom: '64px'}}>
 				{this.ventana()}
 				</div>
-
-
-
 
 			      <BottomNavigation
 			        value={value}

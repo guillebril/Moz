@@ -45,7 +45,6 @@ class MenuProductoContador extends Component {
 						{this.props.cantidad}
 					</Typography>
 					<IconButton style={botonContador} onTouchTap={this.props.onTouchTapSumar}>
-
 						<Add/>
 					</IconButton>
 				</Paper>

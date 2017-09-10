@@ -8,6 +8,10 @@ export default class PedidoItem extends Component {
 
 	render( ) {
 
+		var t = new Date(this.props.pedido.Horario)
+		var horas = t.getHours()
+		var minutos = ('0' + t.getMinutes()).slice(-2)
+
 		return (
 			<div style={{display: 'flex',
 				justifyContent: 'space-between',
@@ -21,7 +25,8 @@ export default class PedidoItem extends Component {
 
 								<div style={{
 									fontWeight: '700',
-									fontSize: '16px'
+									fontSize: '16px',
+									lineHeight: '30px'
 								}}>
 								<span style={{paddingRight: '10px', color: '#ffc107', fontWeight: '500' }} >
 									{this.props.pedido.Cantidad}
@@ -29,15 +34,17 @@ export default class PedidoItem extends Component {
 									{this.props.pedido.Producto}
 								</div>
 									<div style={{
-										fontSize: '14px', paddingLeft: '20px',}}>
+										color: '#595959',
+										fontSize: '14px',}}>
+										<span style={{color: '#929292'}}>{horas +':'+ minutos +' '}</span>
 										{this.props.pedido.Comentarios}
 									</div>
 
 						</div>
 						<div style={{
-
-							fontSize: '18px',
-							fontWeight: '300',
+							paddingTop: '10px',
+							fontSize: '16px',
+							fontWeight: '600',
 							}}>
 							${this.props.pedido.Total}
 						</div>

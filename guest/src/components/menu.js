@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import Menuproducto from './menu-producto.js'
+import { Route } from 'react-router-dom'
+
+
+
 
 export default class Menu extends Component {
 	constructor( props ) {
@@ -15,10 +19,13 @@ export default class Menu extends Component {
 
 		var menu = Object.values(this.props.menu ).map(( categoria, index ) => {
 			var productos = Object.values( categoria.productos ).map(producto => {
-				return ( <Menuproducto key={producto.key} producto={producto}/> )
+				return (
+					<Menuproducto key={producto.key}  producto={producto} />
+				)
 			})
-
 			return (
+
+
 				<div key={categoria.key}>
 					<div className='categoria_titulo'>
 						{categoria.nombre}
@@ -31,9 +38,15 @@ export default class Menu extends Component {
 		})
 
 		return (
-			<div>
-				{menu}
-			</div>
+
+
+			<Route path="/" render={() =>
+				<div>
+					{menu}
+				</div>
+
+		}/>
+
 
 		);
 	}
