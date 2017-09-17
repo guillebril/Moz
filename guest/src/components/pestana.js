@@ -6,56 +6,52 @@ import BottomNavigation, { BottomNavigationButton } from 'material-ui/BottomNavi
 import LocalDiningIcon from 'material-ui-icons/LocalDining';
 import BeerIcon from 'material-ui-icons/Beer';
 import ListIcon from 'material-ui-icons/List';
-import Menu from './menu';
-import Cuenta from './cuenta'
+import Menu from './menu/menu';
+import Cuenta from './cuenta/cuenta'
 
 
 
 export default class Pestana extends Component {
 
 	state = {
-	value: 0,
+	value: 2,
 	restaurante: {},
 	pedidos: {},
 };
 
-	handleChange = (event, value) => {
-     this.setState({ value });
-
-   };
-
+		handleChange = (event, value) => {
+	     this.setState({ value });
+	   };
 
 	 componentDidMount( ) {
-		 // convierto el objeto a array y le hago a doble binding
 		 base.bindToState('restaurantes/oconnells/menu', {
 			 context: this,
 			 state: 'restaurante',
 			 asArray: true
 		 });
 
-		 base.bindToState('restaurantes/oconnells/mesas/-KrZAqaw3YqtWTQIAcM7', {
+		 base.bindToState('restaurantes/oconnells/mesas/-Kti1MOdTgkw0HwEH7Bh/pedidos', {
 			 context: this,
 			 state: 'pedidos',
-			 asArray: true
+			 asArray: true,
+			 queries: {
+				 	orderByChild: 'estado',
+			 		equalTo: 'Pedido' || 'Aceptado',
+					}
 		 });
-
 	 }
 
 
   ventana = () => {
-
 	 if (this.state.value === 0){
 		 return (
 			 <Menu  menu={this.state.restaurante} />
 		 )}
 		 if (this.state.value === 1){
 			 return (<Menu menu={this.state.restaurante}/>)
-
 		 } else {
 			 return (<Cuenta pedidos={this.state.pedidos}/>)
 		 }
-
-
 	 }
 
 
@@ -69,8 +65,7 @@ export default class Pestana extends Component {
 				<div style={{marginBottom: '64px'}}>
 				{this.ventana()}
 				</div>
-
-			      <BottomNavigation
+			     <BottomNavigation
 			        value={value}
 			        onChange={this.handleChange}
 			        showLabels={true}
@@ -79,9 +74,6 @@ export default class Pestana extends Component {
 			        <BottomNavigationButton style={{display: 'grid'}} label="Comidas" icon={<LocalDiningIcon/>} />
 			        <BottomNavigationButton style={{display: 'grid'}} label="Cuenta" icon={<ListIcon />} />
 					</BottomNavigation>
-
-
-
 			</div>
     );
   }

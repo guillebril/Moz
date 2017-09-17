@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import base from '../rebase'
+import base from '../../rebase'
 import Button from 'material-ui/Button';
 import Dialog from 'material-ui/Dialog';
 import List, { ListItem, ListItemText } from 'material-ui/List';
@@ -10,7 +10,7 @@ import CloseIcon from 'material-ui-icons/Close';
 import Typography from 'material-ui/Typography';
 import Slide from 'material-ui/transitions/Slide';
 import TextField from 'material-ui/TextField';
-import MenuProductoContador from './menu-producto-pedir-contador'
+import MenuProductoContador from './productoPedirContador'
 import { Link} from 'react-router-dom'
 
 
@@ -53,17 +53,18 @@ export default class MenuProductoPedir extends Component {
 	}
 
 	agregarEnCuenta = ( ) => {
-		var etiquetaTiempo = new Date
-		base.push('restaurantes/oconnells/mesas/-KrZAqaw3YqtWTQIAcM7', {
+		var etiquetaTiempo = new Date()
+		base.push('restaurantes/oconnells/mesas/-Kti1MOdTgkw0HwEH7Bh/pedidos', {
 			data: {
-				Producto: this.props.producto.nombre,
-				Usuario: base.initializedApp.auth( ).currentUser.uid,
-				Tamaño: '',
-				Cantidad: this.state.cantidad,
-				Comentarios: this.state.comentario,
-				Horario: etiquetaTiempo + '',
-				Total: this.state.totalModal,
-				Estado: 'Pedido'
+				producto: this.props.producto.nombre,
+				descripcion: this.props.producto.descripcion,
+				usuario: base.initializedApp.auth( ).currentUser.uid,
+				tamaño: '',
+				cantidad: this.state.cantidad,
+				comentarios: this.state.comentario,
+				horario: etiquetaTiempo + '',
+				total: this.state.totalModal,
+				estado: 'Pedido',
 			}
 		});
 

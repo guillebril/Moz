@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { Route, Link } from 'react-router-dom'
 import createHistory from 'history/createBrowserHistory'
-
-import MenuProductoPedir from './menu-producto-pedir'
+import MenuProductoPedir from './productoPedir'
 
 
 export default class Menuproducto extends Component {
@@ -12,7 +11,7 @@ export default class Menuproducto extends Component {
 
 
 		super( props )
-		this.state = { open: true }
+		this.state = { open: false }
 	}
 
 

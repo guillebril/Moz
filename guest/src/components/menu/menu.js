@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import Menuproducto from './menu-producto.js'
+import Menuproducto from './productoItem.js'
 import { Route } from 'react-router-dom'
+import { CircularProgress } from 'material-ui/Progress';
 
 
 
@@ -9,8 +10,7 @@ export default class Menu extends Component {
 	constructor( props ) {
 
 		super( props )
-		this.state = {
-			productos: {},
+		this.state = { cargando: true
 		};
 	}
 
@@ -21,11 +21,12 @@ export default class Menu extends Component {
 			var productos = Object.values( categoria.productos ).map(producto => {
 				return (
 					<Menuproducto key={producto.key}  producto={producto} />
+
 				)
+
 			})
+
 			return (
-
-
 				<div key={categoria.key}>
 					<div className='categoria_titulo'>
 						{categoria.nombre}
@@ -42,7 +43,20 @@ export default class Menu extends Component {
 
 			<Route path="/" render={() =>
 				<div>
-					{menu}
+
+
+				{this.props.menu.length ?
+						''
+						 :
+						 <div style={{margin:'auto', width: '50px', marginTop:'100px'}}>
+ 						<CircularProgress size={50} />
+ 						</div>
+
+					 }
+
+					 {menu}
+
+
 				</div>
 
 		}/>
