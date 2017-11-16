@@ -65,7 +65,8 @@ export default class MenuProductoPedir extends Component {
 				horario: etiquetaTiempo + '',
 				total: this.state.totalModal,
 				estado: 'Pedido',
-			}
+
+			},
 		});
 
 	}

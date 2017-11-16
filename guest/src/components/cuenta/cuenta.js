@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import base from '../../rebase'
-import PedidoItem from './pedidoItem.js'
+import CuentaItem from './cuentaItem.js'
 import Button from 'material-ui/Button';
 
 
@@ -9,14 +9,15 @@ export default class Cuenta extends Component {
 	constructor( props ) {
 		super( props )
 		this.state = {
-			pedidos: [ ]
+			cuenta: [ ]
 		};
 	}
 
 	componentDidMount( ) {
 		base.bindToState('restaurantes/oconnells/mesas/-Kti1MOdTgkw0HwEH7Bh/pedidos', {
 			context: this,
-			state: 'pedidos',
+			keepKeys: true,
+			state: 'cuenta',
 			asArray: true
 		});
 
@@ -24,8 +25,8 @@ export default class Cuenta extends Component {
 
 	render( ) {
 
-		var listaPedidos = Object.values(this.props.pedidos).map(( pedido, index ) => {
-			return ( <PedidoItem key={pedido.key} pedido={pedido}/> )
+		var listaPedidos = Object.values(this.state.cuenta).filter(item => item.estado !== 'cancelado').map(( item, index ) => {
+			return ( <CuentaItem key={item.key} {...item} llave={item.key}/> )
 		})
 
 		return (

@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import ItemEstado from './itemEstado'
-export default class PedidoItem extends Component {
+export default class CuentaItem extends Component {
 	constructor( props ) {
 		super( props )
 		this.state = {};
 	}
 
 	render( ) {
-
-		var t = new Date(this.props.pedido.horario)
+		console.log(this.props)
+		var t = new Date(this.props.horario)
 		var horas = t.getHours()
 		var minutos = ('0' + t.getMinutes()).slice(-2)
 
@@ -24,18 +24,18 @@ export default class PedidoItem extends Component {
 
 								<div style={{ fontWeight: '700', fontSize: '16px', lineHeight: '30px' }}>
 								<span style={{paddingRight: '10px', color: '#ffc107', fontWeight: '500' }} >
-									{this.props.pedido.cantidad}
+									{this.props.cantidad}
 								</span>
-									{this.props.pedido.producto}
+									{this.props.producto}
 								</div>
 									<div style={{color: '#595959', fontSize: '14px'}}>
 										<span style={{color: '#929292'}}> {horas +':'+ minutos +' '} </span>
-										{this.props.pedido.comentarios}
+										{this.props.comentarios}
 									</div>
 						</div>
 						<div style={{display:'flex', paddingTop: '10px', fontSize: '16px', fontWeight: '600', alignItems: 'center'}}>
-							<div>${this.props.pedido.total}</div>
-							<div><ItemEstado estado={this.props.pedido.estado} llave={this.props.pedido.key}/></div>
+							<div>${this.props.total}</div>
+							<div><ItemEstado estado={this.props.estado} llave={this.props.llave}/></div>
 						</div>
 
 			</div>
