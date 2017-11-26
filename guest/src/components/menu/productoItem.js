@@ -12,13 +12,10 @@ export default class Menuproducto extends Component {
 
 		super( props )
 		this.state = { open: false,
-										mostrarSnackbar: false
+										mostrarSnackbar: false,
 		 							}
 	}
-	handleOpen = ( ) => {
-		this.setState({ open: true });
 
-	};
 
 	handleClose = ( ) => {
 		this.setState({ open: false,
@@ -38,6 +35,16 @@ export default class Menuproducto extends Component {
 			},3400);
 			};
 
+
+
+
+			handleOpen = ( ) => {
+				this.props.estadoMesa === 'abierta' ?
+				this.setState({ open: true })
+				: null
+			};
+
+
 	render( ) {
 
 		return (
@@ -47,7 +54,6 @@ export default class Menuproducto extends Component {
 					<div className='producto_item_nombre'>{this.props.producto.nombre}</div>
 					<div className='producto_item_descripcion'>{this.props.producto.descripcion}</div>
 					<div className='producto_item_precio'>${this.props.producto.precio}</div>
-
 					<div>
 
 						<Route path={'/'+this.props.producto.key} render={() =>

@@ -54,7 +54,6 @@ export default class MenuProductoPedir extends Component {
 	}
 
 	agregarEnCuenta = ( ) => {
-
 		var etiquetaTiempo = new Date()
 		base.push('restaurantes/oconnells/mesas/-Kti1MOdTgkw0HwEH7Bh/pedidos', {
 			data: {

@@ -16,7 +16,8 @@ export default class Pestana extends Component {
 	value: 2,
 	bebidas:{},
 	comidas:{},
-	pedidos: {},
+	cuenta: {},
+	estadoMesa: '',
 };
 
 		handleChange = (event, value) => {
@@ -26,7 +27,7 @@ export default class Pestana extends Component {
 
 
 	 componentDidMount( ) {
-		 
+
 
 
  		 base.bindToState('restaurantes/oconnells/menu', {
@@ -55,14 +56,22 @@ export default class Pestana extends Component {
 
 		 base.bindToState('restaurantes/oconnells/mesas/-Kti1MOdTgkw0HwEH7Bh/pedidos', {
 			 context: this,
-			 state: 'pedidos',
+			 state: 'cuenta',
 			 asArray: true,
 			 queries: {
 				 	orderByChild: 'estado',
 			 		equalTo: 'Pedido' || 'Aceptado',
 					}
 		 });
+
+		 base.bindToState('restaurantes/oconnells/mesas/-Kti1MOdTgkw0HwEH7Bh/estadoMesa', {
+			context: this,
+			state: 'estadoMesa',
+			asArray: false,
+		});
 	 }
+
+
 
 
   ventana = () => {
@@ -70,12 +79,12 @@ export default class Pestana extends Component {
 		const categoriasBebidasOrdenadas = [].concat(this.state.bebidas).sort((a, b) => a.pos > b.pos)
 	 if (this.state.value === 0){
 		 return (
-			 <Menu  menu={categoriasBebidasOrdenadas} />
+			 <Menu estadoMesa={this.state.estadoMesa} menu={categoriasBebidasOrdenadas} />
 		 )}
 		 if (this.state.value === 1){
-			 return (<Menu menu={categoriasComidasOrdenadas}/>)
+			 return (<Menu estadoMesa={this.state.estadoMesa} menu={categoriasComidasOrdenadas}/>)
 		 } else {
-			 return (<Cuenta pedidos={this.state.pedidos}/>)
+			 return (<Cuenta estadoMesa={this.state.estadoMesa} cuenta={this.state.cuenta}/>)
 		 }
 	 }
 

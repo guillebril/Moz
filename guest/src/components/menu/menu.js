@@ -8,13 +8,10 @@ import { CircularProgress } from 'material-ui/Progress';
 
 export default class Menu extends Component {
 	constructor( props ) {
-
 		super( props )
 		this.state = { cargando: true,
-
 		};
 	}
-
 
 	render( ) {
 
@@ -24,7 +21,7 @@ export default class Menu extends Component {
 			.sort((a, b) => a.pos > b.pos)
 			.map(producto => {
 				return (
-					<Menuproducto key={producto.key}  producto={producto} />
+					<Menuproducto estadoMesa={this.props.estadoMesa} key={producto.key}  producto={producto} />
 				)
 			})
 
@@ -39,12 +36,12 @@ export default class Menu extends Component {
 				</div>
 			)
 		})
-
+		let colorSegunEstadoMesa =  this.props.estadoMesa === 'abierta' ? '#000' : '#999'
 		return (
 
 <div>
 	<Route path="/" render={() =>
-		<div>
+		<div style={{color: colorSegunEstadoMesa}}>
 
 
 			{this.props.menu.length ?
@@ -53,17 +50,9 @@ export default class Menu extends Component {
 			<div style={{margin:'auto', width: '50px', marginTop:'100px'}}>
 				<CircularProgress size={50} />
 			</div>
-
 			}
-
 			{menu}
-
-
-
-
 		</div>
-
-
 	}/>
 
 </div>
