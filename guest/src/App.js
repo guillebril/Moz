@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
-import createPalette from 'material-ui/styles/palette';
 import {red, amber} from 'material-ui/colors';
 import Pestana from './components/pestana';
 import {BrowserRouter as Router } from 'react-router-dom'
@@ -10,10 +9,10 @@ import {BrowserRouter as Router } from 'react-router-dom'
 
 
 const temaMozapp = createMuiTheme({
-  palette: createPalette({
+  palette:{
     primary: amber,
     accent: red,
-  }),
+  },
 });
 
 

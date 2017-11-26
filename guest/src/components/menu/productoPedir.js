@@ -24,7 +24,8 @@ export default class MenuProductoPedir extends Component {
 		this.state = {
 			cantidad: 1,
 			totalModal: props.producto.precio,
-			comentario: ''
+			comentario: '',
+			mostrarSnackbar: true
 		};
 	}
 
@@ -53,6 +54,7 @@ export default class MenuProductoPedir extends Component {
 	}
 
 	agregarEnCuenta = ( ) => {
+
 		var etiquetaTiempo = new Date()
 		base.push('restaurantes/oconnells/mesas/-Kti1MOdTgkw0HwEH7Bh/pedidos', {
 			data: {
@@ -67,9 +69,17 @@ export default class MenuProductoPedir extends Component {
 				estado: 'Pedido',
 
 			},
-		});
+		})
+
+
+
+
 
 	}
+
+	 hacerTransition = (props) => {
+  	return <Slide direction="up" {...props} />;
+		}
 
 	render( ) {
 
@@ -78,52 +88,49 @@ export default class MenuProductoPedir extends Component {
 
 	<Dialog fullScreen open={this.props.open}
 		onRequestClose={this.props.handleClose}
-		transition={< Slide direction='up' />}>
+		transition={this.hacerTransition}>
 
 		<AppBar style={{ position: 'relative',backgroundColor: '#F44336'}}>
 			<Toolbar>
-					<Typography type="title" style={{ 'WebkitFontSmoothing': 'antialiased',
-						color: '#fff', flex: '1'}}
-						color="inherit">
-						{this.props.producto.nombre}
-					</Typography>
+				<Typography type="title" style={{ 'WebkitFontSmoothing': 'antialiased',
+				color: '#fff', flex: '1'}}
+				color="inherit">
+					{this.props.producto.nombre}
+				</Typography>
 
 
-						<IconButton style={{ color: '#fff'}} onClick={this.props.handleClose} aria-label="Close">
-							<CloseIcon/>
-						</IconButton>
+				<IconButton style={{ color: '#fff'}} onClick={this.props.handleClose} aria-label="Close">
+					<CloseIcon/>
+				</IconButton>
 
 			</Toolbar>
 		</AppBar>
 
 		<List>
 			<ListItem>
-						<ListItemText primary={this.props.producto.nombre} secondary={this.props.producto.descripcion}/>
-						<Typography type='title'>
-								${this.props.producto.precio}
-						</Typography>
+				<ListItemText primary={this.props.producto.nombre} secondary={this.props.producto.descripcion}/>
+				<Typography type='title'>
+					${this.props.producto.precio}
+				</Typography>
 			</ListItem>
 
 			<ListItem>
-					<TextField name='comentario' onChange={this.handleChange} label="Comentarios" multiline
-					fullWidth margin="normal"/>
+				<TextField name='comentario' onChange={this.handleChange} label="Comentarios" multiline
+				fullWidth margin="normal"/>
 			</ListItem>
 
 			<ListItem>
-					<MenuProductoContador
+				<MenuProductoContador
 					cantidad={this.state.cantidad}
 					onTouchTapRestar={this.onTouchTapRestar}
 					onTouchTapSumar={this.onTouchTapSumar}/>
 			</ListItem>
 		</List>
 
-		<Link to={'/menu/'}>
-		<Button raised color="primary" onClick={this.agregarEnCuenta} style={{ height: '45px', width: '100%'}}>
+		<Button raised color="primary" onClick={()=> {this.agregarEnCuenta() ; this.props.handleCloseConSnackbar()}} style={{ height: '45px', width: '100%'}}>
 			<Typography type='title'> Pedir {this.state.cantidad} (${this.state.totalModal})</Typography>
 		</Button>
-		</Link>
 	</Dialog>
-
 
 		)
 	}

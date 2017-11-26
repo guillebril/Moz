@@ -3,8 +3,7 @@ import React, { Component } from 'react';
 import base from '../rebase'
 
 import BottomNavigation, { BottomNavigationButton } from 'material-ui/BottomNavigation';
-import LocalDiningIcon from 'material-ui-icons/LocalDining';
-import BeerIcon from 'material-ui-icons/Beer';
+import {LocalDining, LocalDrink} from 'material-ui-icons';
 import ListIcon from 'material-ui-icons/List';
 import Menu from './menu/menu';
 import Cuenta from './cuenta/cuenta'
@@ -15,7 +14,8 @@ export default class Pestana extends Component {
 
 	state = {
 	value: 2,
-	restaurante: {},
+	bebidas:{},
+	comidas:{},
 	pedidos: {},
 };
 
@@ -23,12 +23,35 @@ export default class Pestana extends Component {
 	     this.setState({ value });
 	   };
 
+
+
 	 componentDidMount( ) {
+		 
+
+
+ 		 base.bindToState('restaurantes/oconnells/menu', {
+ 			 context: this,
+ 			 state: 'comidas',
+ 			 asArray: true,
+			 queries: {
+				 orderByChild: 'tipoCategoria',
+				 equalTo: 'Comidas',
+				 }
+
+ 		 });
+
+
 		 base.bindToState('restaurantes/oconnells/menu', {
 			 context: this,
-			 state: 'restaurante',
-			 asArray: true
+			 state: 'bebidas',
+			 asArray: true,
+			 queries: {
+				 orderByChild:  'tipoCategoria',
+				 equalTo: 'Bebidas',
+			 },
+
 		 });
+
 
 		 base.bindToState('restaurantes/oconnells/mesas/-Kti1MOdTgkw0HwEH7Bh/pedidos', {
 			 context: this,
@@ -43,12 +66,14 @@ export default class Pestana extends Component {
 
 
   ventana = () => {
+		const categoriasComidasOrdenadas = [].concat(this.state.comidas).sort((a, b) => a.pos > b.pos)
+		const categoriasBebidasOrdenadas = [].concat(this.state.bebidas).sort((a, b) => a.pos > b.pos)
 	 if (this.state.value === 0){
 		 return (
-			 <Menu  menu={this.state.restaurante} />
+			 <Menu  menu={categoriasBebidasOrdenadas} />
 		 )}
 		 if (this.state.value === 1){
-			 return (<Menu menu={this.state.restaurante}/>)
+			 return (<Menu menu={categoriasComidasOrdenadas}/>)
 		 } else {
 			 return (<Cuenta pedidos={this.state.pedidos}/>)
 		 }
@@ -56,23 +81,23 @@ export default class Pestana extends Component {
 
 
 
-	render()
-	 {
 
+
+	render(){
     const { value } = this.state;
     return (
 			<div>
 				<div style={{marginBottom: '64px'}}>
-				{this.ventana()}
+					{this.ventana()}
 				</div>
-			     <BottomNavigation
-			        value={value}
-			        onChange={this.handleChange}
-			        showLabels={true}
-							style={{position: 'fixed', bottom: '0', width: '100%', boxShadow: '-1px 7px 20px 0px'}}>
-			        <BottomNavigationButton style={{display: 'grid'}}label="Bebidas" icon={<BeerIcon />}/>
-			        <BottomNavigationButton style={{display: 'grid'}} label="Comidas" icon={<LocalDiningIcon/>} />
-			        <BottomNavigationButton style={{display: 'grid'}} label="Cuenta" icon={<ListIcon />} />
+				<BottomNavigation
+					value={value}
+					onChange={this.handleChange}
+					showLabels={true}
+					style={{position: 'fixed', bottom: '0', width: '100%', boxShadow: '-1px 7px 20px 0px'}}>
+					<BottomNavigationButton style={{display: 'grid'}}label="Bebidas" icon={<LocalDrink />}/>
+					<BottomNavigationButton style={{display: 'grid'}} label="Comidas" icon={<LocalDining/>} />
+					<BottomNavigationButton style={{display: 'grid'}} label="Cuenta" icon={<ListIcon />} />
 					</BottomNavigation>
 			</div>
     );

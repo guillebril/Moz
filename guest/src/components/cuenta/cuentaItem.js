@@ -7,7 +7,6 @@ export default class CuentaItem extends Component {
 	}
 
 	render( ) {
-		console.log(this.props)
 		var t = new Date(this.props.horario)
 		var horas = t.getHours()
 		var minutos = ('0' + t.getMinutes()).slice(-2)

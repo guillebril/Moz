@@ -10,7 +10,8 @@ export default class Menu extends Component {
 	constructor( props ) {
 
 		super( props )
-		this.state = { cargando: true
+		this.state = { cargando: true,
+
 		};
 	}
 
@@ -18,12 +19,13 @@ export default class Menu extends Component {
 	render( ) {
 
 		var menu = Object.values(this.props.menu ).map(( categoria, index ) => {
-			var productos = Object.values( categoria.productos ).map(producto => {
+			var productos = Object.values( categoria.productos )
+			.filter(producto => producto.disponibilidad === true)
+			.sort((a, b) => a.pos > b.pos)
+			.map(producto => {
 				return (
 					<Menuproducto key={producto.key}  producto={producto} />
-
 				)
-
 			})
 
 			return (
@@ -40,28 +42,31 @@ export default class Menu extends Component {
 
 		return (
 
-
-			<Route path="/" render={() =>
-				<div>
-
-
-				{this.props.menu.length ?
-						''
-						 :
-						 <div style={{margin:'auto', width: '50px', marginTop:'100px'}}>
- 						<CircularProgress size={50} />
- 						</div>
-
-					 }
-
-					 {menu}
+<div>
+	<Route path="/" render={() =>
+		<div>
 
 
-				</div>
+			{this.props.menu.length ?
+				''
+			:
+			<div style={{margin:'auto', width: '50px', marginTop:'100px'}}>
+				<CircularProgress size={50} />
+			</div>
 
-		}/>
+			}
+
+			{menu}
 
 
+
+
+		</div>
+
+
+	}/>
+
+</div>
 		);
 	}
 

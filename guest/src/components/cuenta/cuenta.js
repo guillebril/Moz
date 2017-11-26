@@ -29,14 +29,20 @@ export default class Cuenta extends Component {
 			return ( <CuentaItem key={item.key} {...item} llave={item.key}/> )
 		})
 
+		//esto ya devuelve el total de la cuenta:
+		console.log( Object.values(this.state.cuenta)
+		.filter(item => item.estado !== 'cancelado')
+		.map((item,index) => item.total)
+		.reduce((a , b)  => Number(a) + Number(b), 0)
+	)
 		return (
 
 			<div style={{paddingBottom: '6px'}}>
 				{listaPedidos}
 				<div style={{ display: 'grid', margin: '10px'}}>
-				<Button raised color="primary" style={{ height: '46px'}}>
-					<div style={{fontSize: '16px'}}>PEDIR LA CUENTA</div>
-				</Button>
+					<Button raised color="primary" style={{ height: '46px'}}>
+						<div style={{fontSize: '16px'}}>PEDIR LA CUENTA</div>
+					</Button>
 				</div>
 			</div>
 		)
