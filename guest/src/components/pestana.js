@@ -58,10 +58,7 @@ export default class Pestana extends Component {
 			 context: this,
 			 state: 'cuenta',
 			 asArray: true,
-			 queries: {
-				 	orderByChild: 'estado',
-			 		equalTo: 'Pedido' || 'Aceptado',
-					}
+			 
 		 });
 
 		 base.bindToState('restaurantes/oconnells/mesas/-Kti1MOdTgkw0HwEH7Bh/estadoMesa', {

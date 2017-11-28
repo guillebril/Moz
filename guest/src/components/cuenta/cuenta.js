@@ -14,7 +14,6 @@ export default class Cuenta extends Component {
 
 
 	render( ) {
-
 		var pedidosFiltrados = Object.values(this.props.cuenta)
 		.filter(item => item.estado !== 'cancelado')
 
