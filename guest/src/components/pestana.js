@@ -58,7 +58,7 @@ export default class Pestana extends Component {
 			 context: this,
 			 state: 'cuenta',
 			 asArray: true,
-			 
+
 		 });
 
 		 base.bindToState('restaurantes/oconnells/mesas/-Kti1MOdTgkw0HwEH7Bh/estadoMesa', {
@@ -101,7 +101,7 @@ export default class Pestana extends Component {
 					onChange={this.handleChange}
 					showLabels={true}
 					style={{position: 'fixed', bottom: '0', width: '100%', boxShadow: '-1px 7px 20px 0px'}}>
-					<BottomNavigationButton style={{display: 'grid'}}label="Bebidas" icon={<LocalDrink />}/>
+					<BottomNavigationButton style={{display: 'grid'}} label="Bebidas" icon={<LocalDrink />}/>
 					<BottomNavigationButton style={{display: 'grid'}} label="Comidas" icon={<LocalDining/>} />
 					<BottomNavigationButton style={{display: 'grid'}} label="Cuenta" icon={<ListIcon />} />
 					</BottomNavigation>

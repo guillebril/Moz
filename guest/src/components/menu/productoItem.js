@@ -39,10 +39,12 @@ export default class Menuproducto extends Component {
 
 
 			handleOpen = ( ) => {
-				this.props.estadoMesa === 'abierta' ?
+				this.props.estadoMesa !== 'abierta' ?
+				null
+				:
 				this.setState({ open: true })
-				: null
 			};
+
 
 
 	render( ) {

@@ -13,29 +13,38 @@ export default class Menu extends Component {
 		};
 	}
 
+
+
+
+
+
 	render( ) {
 
-		var menu = Object.values(this.props.menu ).map(( categoria, index ) => {
-			var productos = Object.values( categoria.productos )
-			.filter(producto => producto.disponibilidad === true)
-			.sort((a, b) => a.pos > b.pos)
-			.map(producto => {
-				return (
-					<Menuproducto estadoMesa={this.props.estadoMesa} key={producto.key}  producto={producto} />
-				)
-			})
+		var menu  =Object.values(this.props.menu ).map(( categoria, index ) => {
+ 			var productos = Object.values( categoria.productos )
+ 			.filter(producto => producto.disponibilidad === true)
+ 			.sort((a, b) => a.pos > b.pos)
+ 			.map(producto => {
 
-			return (
-				<div key={categoria.key}>
-					<div className='categoria_titulo'>
-						{categoria.nombre}
-					</div>
-					<div>
-						{productos}
-					</div>
-				</div>
-			)
-		})
+ 				return (
+ 					<Menuproducto estadoMesa={this.props.estadoMesa} key={producto.key}  producto={producto} />
+ 				)
+ 			})
+
+ 			return (
+
+
+ 				<div key={categoria.key}>
+ 					<div className='categoria_titulo'>
+ 						{categoria.nombre}
+ 					</div>
+ 					<div>
+ 						{productos}
+ 					</div>
+ 				</div>
+ 			)
+ 		})
+
 		let colorSegunEstadoMesa =  this.props.estadoMesa === 'abierta' ? '#000' : '#999'
 		return (
 
@@ -43,15 +52,14 @@ export default class Menu extends Component {
 	<Route path="/" render={() =>
 		<div style={{color: colorSegunEstadoMesa}}>
 
+			{this.props.menu[0].key === undefined  ?
 
-			{this.props.menu.length ?
-				''
+				<div style={{margin:'auto', width: '50px', marginTop:'100px'}}>
+					<CircularProgress size={50} />
+				</div>
 			:
-			<div style={{margin:'auto', width: '50px', marginTop:'100px'}}>
-				<CircularProgress size={50} />
-			</div>
-			}
-			{menu}
+			menu}
+
 		</div>
 	}/>
 
