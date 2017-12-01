@@ -14,8 +14,8 @@ export default class CuentaItem extends Component {
 		return (
 			<div style={{display: 'flex',
 				justifyContent: 'space-between',
-				padding: '10px',
-			 	paddingRight: '20px',
+				padding: '5px 20px 5px 10px' ,
+
 				fontFamily: 'Roboto'}}>
 						<div style={{
 

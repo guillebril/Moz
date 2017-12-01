@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import CuentaItem from './cuentaItem.js'
 import Button from 'material-ui/Button';
 import AlertPedirCuenta from './alertPedirCuenta'
-
+import { DoneAll} from 'material-ui-icons';
 
 export default class BotonPedirCuenta extends Component {
 	constructor( props ) {
@@ -28,7 +28,16 @@ export default class BotonPedirCuenta extends Component {
 
 
 		return (
+
       <div style={{ display: 'grid', margin: '10px'}}>
+				<div style={{textAlign: 'center', color: '#ccc', margin:'15px', marginBottom:'30px'}}>Cuando veas el
+
+
+					<DoneAll style={{width:'20px', paddingLeft:'6px', color: '#1CD686'}}/>
+
+
+
+				quiere decir que estamos preparando tu pedido</div>
         <Button disabled={botonDisabled} raised onClick={this.handleAlertOpen} color="primary" style={{ height: '46px'}}>
           <div style={{fontSize: '16px'}}>{textoBoton }(${this.props.totalCuenta})</div>
         </Button>

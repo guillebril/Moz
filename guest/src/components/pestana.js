@@ -13,9 +13,9 @@ import Cuenta from './cuenta/cuenta'
 export default class Pestana extends Component {
 
 	state = {
-	value: 2,
-	bebidas:{},
-	comidas:{},
+	value: 0,
+	bebidas:[],
+	comidas:[],
 	cuenta: {},
 	estadoMesa: '',
 };
@@ -27,9 +27,6 @@ export default class Pestana extends Component {
 
 
 	 componentDidMount( ) {
-
-
-
  		 base.bindToState('restaurantes/oconnells/menu', {
  			 context: this,
  			 state: 'comidas',
@@ -42,7 +39,7 @@ export default class Pestana extends Component {
  		 });
 
 
-		 base.bindToState('restaurantes/oconnells/menu', {
+		 base.syncState('restaurantes/oconnells/menu', {
 			 context: this,
 			 state: 'bebidas',
 			 asArray: true,
@@ -54,14 +51,14 @@ export default class Pestana extends Component {
 		 });
 
 
-		 base.bindToState('restaurantes/oconnells/mesas/-Kti1MOdTgkw0HwEH7Bh/pedidos', {
+		 base.syncState('restaurantes/oconnells/mesas/-Kti1MOdTgkw0HwEH7Bh/pedidos', {
 			 context: this,
 			 state: 'cuenta',
 			 asArray: true,
 
 		 });
 
-		 base.bindToState('restaurantes/oconnells/mesas/-Kti1MOdTgkw0HwEH7Bh/estadoMesa', {
+		 base.syncState('restaurantes/oconnells/mesas/-Kti1MOdTgkw0HwEH7Bh/estadoMesa', {
 			context: this,
 			state: 'estadoMesa',
 			asArray: false,
@@ -74,30 +71,40 @@ export default class Pestana extends Component {
   ventana = () => {
 		const categoriasComidasOrdenadas = [].concat(this.state.comidas).sort((a, b) => a.pos > b.pos)
 		const categoriasBebidasOrdenadas = [].concat(this.state.bebidas).sort((a, b) => a.pos > b.pos)
-	 if (this.state.value === 0){
-		 return (
+		//verifico si las categorias del menu con sus productos ya llego.
+		//const cargando = Object.keys(categoriasComidasOrdenadas[0]).length === 0
+
+
+
+ 		if (this.state.value === 0){
+			return (
 			 <Menu estadoMesa={this.state.estadoMesa} menu={categoriasBebidasOrdenadas} />
 		 )}
 		 if (this.state.value === 1){
+
 			 return (<Menu estadoMesa={this.state.estadoMesa} menu={categoriasComidasOrdenadas}/>)
 		 } else {
-			 return (<Cuenta estadoMesa={this.state.estadoMesa} cuenta={this.state.cuenta}/>)
+
+				return (
+						<Cuenta estadoMesa={this.state.estadoMesa} cuenta={this.state.cuenta}/>
+					)
 		 }
-	 }
+
+
+ }
 
 
 
 
 
 	render(){
-    const { value } = this.state;
     return (
 			<div>
 				<div style={{marginBottom: '64px'}}>
 					{this.ventana()}
 				</div>
 				<BottomNavigation
-					value={value}
+					value={this.state.value}
 					onChange={this.handleChange}
 					showLabels={true}
 					style={{position: 'fixed', bottom: '0', width: '100%', boxShadow: '-1px 7px 20px 0px'}}>

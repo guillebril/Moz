@@ -8,6 +8,9 @@ export default class ItemEstado extends Component {
 
 
   eliminarItem = ()  =>{
+
+  
+
     base.update('restaurantes/oconnells/mesas/-Kti1MOdTgkw0HwEH7Bh/pedidos/'+this.props.llave , {
       data: {estado: 'cancelado'},
       }
