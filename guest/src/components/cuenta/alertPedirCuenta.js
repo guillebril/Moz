@@ -19,10 +19,22 @@ class AlertPedirCuenta extends React.Component {
 
 
 
-
+    sumarTotal = () =>
+    {
+      return(this.props.totalCuenta);
+    }
 
     handlePedirCuenta =() =>{
-
+      var total = this.sumarTotal();
+      var etiquetaTiempo = new Date()
+      base.push('restaurantes/oconnells/mesas/-Kti1MOdTgkw0HwEH7Bh/pedidos', {
+  			data: {
+  				producto: "Cuenta pedida",
+  				usuario: base.initializedApp.auth( ).currentUser.uid,
+  				horario: etiquetaTiempo + '',
+  				total: total,
+  			},
+      });
       base.update('restaurantes/oconnells/mesas/-Kti1MOdTgkw0HwEH7Bh/', {
         data: {estadoMesa: 'cerrada'}
       }).then(() => {
