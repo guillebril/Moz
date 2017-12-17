@@ -1,21 +1,16 @@
 import React, { Component } from 'react';
 import './App.css';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
-import {red, amber} from 'material-ui/colors';
+import { red, amber } from 'material-ui/colors';
 import Pestana from './components/pestana';
-import {BrowserRouter as Router } from 'react-router-dom'
-
-
-
+import { BrowserRouter as Router } from 'react-router-dom'
 
 const temaMozapp = createMuiTheme({
-  palette:{
+  palette: {
     primary: amber,
     accent: red,
   },
 });
-
-
 
 class App extends Component {
 
@@ -26,17 +21,15 @@ class App extends Component {
     };
   }
 
+  render() {
 
-
-  render()
-   {
-
-    return(
+    return (
       <Router >
       <MuiThemeProvider theme={temaMozapp}>
               <Pestana/>
       </MuiThemeProvider>
       </Router>
+
     )
   }
 }
