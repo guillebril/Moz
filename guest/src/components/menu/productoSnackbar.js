@@ -48,7 +48,7 @@ class ProductoSnackbar extends React.Component {
           }}
           message={<span id="message-id">Producto agregado</span>}
           action={[
-            <Button key="undo" color="accent" dense onClick={this.handleRequestClose}>
+            <Button key="undo" color="accent" dense onClick={this.props.irACuenta}>
               VER CUENTA
             </Button>,
             <IconButton

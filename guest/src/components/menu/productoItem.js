@@ -61,13 +61,14 @@ export default class Menuproducto extends Component {
 								open={this.state.open}
 								handleOpen={this.handleOpen}
 								handleClose={this.handleClose}
+
 								handleCloseConSnackbar={this.handleCloseConSnackbar}
 								onRequestClose={this.handleClose}
 								producto={this.props.producto} />
 						}/>
 					</div>
 				</div>
-				{this.state.mostrarSnackbar ? <ProductoSnackbar/> :  null}
+				{this.state.mostrarSnackbar ? <ProductoSnackbar irACuenta={this.props.irACuenta}/> :  null}
 
 			</Link>
 

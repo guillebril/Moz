@@ -26,7 +26,6 @@ class App extends Component {
       <Router >
 
       <MuiThemeProvider theme={temaMozapp}>
-
               <Pestana/>
       </MuiThemeProvider>
       </Router>

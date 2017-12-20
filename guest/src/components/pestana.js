@@ -23,6 +23,10 @@ export default class Pestana extends Component {
     this.setState({ value });
   };
 
+  irACuenta = () => {
+    this.setState({ value: 2 });
+  }
+
   componentDidMount() {
     base.syncState('restaurantes/oconnells/menu', {
       context: this,
@@ -66,12 +70,18 @@ export default class Pestana extends Component {
 
     if (this.state.value === 0) {
       return (
-        <Menu estadoMesa={this.state.estadoMesa} menu={categoriasBebidasOrdenadas} />
+        <Menu
+          irACuenta = {this.irACuenta.bind(this)}
+          estadoMesa={this.state.estadoMesa}
+          menu={categoriasBebidasOrdenadas} />
       )
     }
     if (this.state.value === 1) {
 
-      return (<Menu estadoMesa={this.state.estadoMesa} menu={categoriasComidasOrdenadas}/>)
+      return (<Menu
+          irACuenta = {this.irACuenta.bind(this)}
+        estadoMesa={this.state.estadoMesa}
+        menu={categoriasComidasOrdenadas}/>)
     } else {
 
       return (

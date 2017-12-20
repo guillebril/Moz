@@ -11,81 +11,70 @@ import Typography from 'material-ui/Typography';
 import Slide from 'material-ui/transitions/Slide';
 import TextField from 'material-ui/TextField';
 import MenuProductoContador from './productoPedirContador'
-import { Link} from 'react-router-dom'
-
 
 export default class MenuProductoPedir extends Component {
-	constructor( props ) {
+  constructor(props) {
 
+    super(props)
 
+    this.state = {
+      cantidad: 1,
+      totalModal: props.producto.precio,
+      comentario: '',
+      mostrarSnackbar: true
+    };
+  }
 
-		super( props )
+  handleChange = event => {
+    this.setState({ comentario: event.target.value });
+  };
 
-		this.state = {
-			cantidad: 1,
-			totalModal: props.producto.precio,
-			comentario: '',
-			mostrarSnackbar: true
-		};
-	}
+  onTouchTapRestar = (event) => {
+    var cantidad = this.state.cantidad
+    if (cantidad > 1) {
+      this.setState({
+        cantidad: cantidad - 1,
+        totalModal: (cantidad - 1) * this.props.producto.precio
+      })
+    }
+  }
 
+  onTouchTapSumar = (event) => {
+    var cantidad = this.state.cantidad
+    this.setState({
+      cantidad: cantidad + 1,
+      totalModal: (cantidad + 1) * this.props.producto.precio
+    })
+  }
 
-	handleChange = event => {
-		this.setState({ comentario: event.target.value });
-	};
+  agregarEnCuenta = () => {
+    var etiquetaTiempo = new Date()
+    base.push('restaurantes/oconnells/mesas/-Kti1MOdTgkw0HwEH7Bh/pedidos', {
+      data: {
+        producto: this.props.producto.nombre,
+        descripcion: this.props.producto.descripcion,
+        usuario: base.initializedApp.auth().currentUser.uid,
+        tamaño: '',
+        cantidad: this.state.cantidad,
+        comentarios: this.state.comentario,
+        horario: etiquetaTiempo + '',
+        total: this.state.totalModal,
+        estado: 'Pedido',
 
+      },
+    })
 
-	onTouchTapRestar = ( event ) => {
-		var cantidad = this.state.cantidad
-		if ( cantidad > 1 ) {
-			this.setState({
-				cantidad: cantidad - 1,
-				totalModal: ( cantidad - 1 ) * this.props.producto.precio
-			})
-		}
-	}
+  }
 
-	onTouchTapSumar = ( event ) => {
-		var cantidad = this.state.cantidad
-		this.setState({
-			cantidad: cantidad + 1,
-			totalModal: ( cantidad + 1 ) * this.props.producto.precio
-		})
-	}
+  hacerTransition = (props) => {
+    return <Slide direction="up" {...props} />;
+  }
 
-	agregarEnCuenta = ( ) => {
-		var etiquetaTiempo = new Date()
-		base.push('restaurantes/oconnells/mesas/-Kti1MOdTgkw0HwEH7Bh/pedidos', {
-			data: {
-				producto: this.props.producto.nombre,
-				descripcion: this.props.producto.descripcion,
-				usuario: base.initializedApp.auth( ).currentUser.uid,
-				tamaño: '',
-				cantidad: this.state.cantidad,
-				comentarios: this.state.comentario,
-				horario: etiquetaTiempo + '',
-				total: this.state.totalModal,
-				estado: 'Pedido',
+  render() {
 
-			},
-		})
+    return (
 
-
-
-
-
-	}
-
-	 hacerTransition = (props) => {
-  	return <Slide direction="up" {...props} />;
-		}
-
-	render( ) {
-
-		return (
-
-
-	<Dialog fullScreen open={this.props.open}
+      <Dialog fullScreen open={this.props.open}
 		onRequestClose={this.props.handleClose}
 		transition={this.hacerTransition}>
 
@@ -131,7 +120,7 @@ export default class MenuProductoPedir extends Component {
 		</Button>
 	</Dialog>
 
-		)
-	}
+    )
+  }
 
 }
