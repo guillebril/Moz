@@ -1,6 +1,7 @@
 import '../App.css';
 import React, { Component } from 'react';
 import base from '../rebase'
+import AppBarra from './appBarra'
 
 import BottomNavigation, { BottomNavigationButton } from 'material-ui/BottomNavigation';
 import { LocalDining, LocalDrink } from 'material-ui-icons';
@@ -83,6 +84,7 @@ export default class Pestana extends Component {
   render() {
     return (
       <div>
+        <AppBarra/>
 				<div style={{marginBottom: '64px'}}>
 					{this.ventana()}
 				</div>

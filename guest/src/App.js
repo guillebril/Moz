@@ -4,7 +4,6 @@ import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import { red, amber } from 'material-ui/colors';
 import Pestana from './components/pestana';
 import { BrowserRouter as Router } from 'react-router-dom'
-
 const temaMozapp = createMuiTheme({
   palette: {
     primary: amber,
@@ -25,7 +24,9 @@ class App extends Component {
 
     return (
       <Router >
+
       <MuiThemeProvider theme={temaMozapp}>
+
               <Pestana/>
       </MuiThemeProvider>
       </Router>
