@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import { red, amber } from 'material-ui/colors';
-import Pestana from './components/pestana';
+import Landing from './components/landing';
 import { BrowserRouter as Router } from 'react-router-dom'
 const temaMozapp = createMuiTheme({
   palette: {
@@ -26,7 +26,7 @@ class App extends Component {
       <Router >
 
       <MuiThemeProvider theme={temaMozapp}>
-              <Pestana/>
+              <Landing/>
       </MuiThemeProvider>
       </Router>
 
