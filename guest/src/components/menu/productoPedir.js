@@ -49,16 +49,19 @@ export default class MenuProductoPedir extends Component {
 
   agregarEnCuenta = () => {
     var etiquetaTiempo = new Date()
-    base.push('restaurantes/oconnells/mesas/-Kti1MOdTgkw0HwEH7Bh/pedidos', {
+    base.push('restaurantes/oconnells/mesas/' + this.props.mesaKey + '/pedidos', {
       data: {
         producto: this.props.producto.nombre,
         descripcion: this.props.producto.descripcion,
         usuario: base.initializedApp.auth().currentUser.uid,
         tamaño: '',
+        mesaKey: this.props.mesaKey,
         cantidad: this.state.cantidad,
         comentarios: this.state.comentario,
         horario: etiquetaTiempo + '',
         total: this.state.totalModal,
+        numeroMesa: this.props.numeroMesa,
+
         estado: 'Pedido',
 
       },

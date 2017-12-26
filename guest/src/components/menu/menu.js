@@ -22,6 +22,8 @@ export default class Menu extends Component {
 
           return (
             <Menuproducto
+              numeroMesa={this.props.numeroMesa}
+              mesaKey={this.props.mesaKey}
 							irACuenta={this.props.irACuenta}
 							estadoMesa={this.props.estadoMesa}
 							key={producto.key}

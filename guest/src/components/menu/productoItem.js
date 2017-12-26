@@ -58,10 +58,11 @@ export default class Menuproducto extends Component {
 
 						<Route path={'/'+this.props.producto.key} render={() =>
 							<MenuProductoPedir
+                mesaKey={this.props.mesaKey}
 								open={this.state.open}
 								handleOpen={this.handleOpen}
 								handleClose={this.handleClose}
-
+                numeroMesa={this.props.numeroMesa}
 								handleCloseConSnackbar={this.handleCloseConSnackbar}
 								onRequestClose={this.handleClose}
 								producto={this.props.producto} />

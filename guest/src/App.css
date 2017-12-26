@@ -52,3 +52,23 @@ text-transform: uppercase;
 color: #555;
 background-color: #eee;
 }
+
+
+#codigo{
+  color: #fff;
+  font-size: 45px;
+  width:190px
+}
+
+
+#campoCodigo label{
+  font-size: 25px;
+  color: #fff
+}
+
+
+
+#codigo  .MuiInput-underline-23:before {
+    height: 2px;
+    background-color: #fff;
+}

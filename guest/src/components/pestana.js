@@ -50,14 +50,14 @@ export default class Pestana extends Component {
 
     });
 
-    base.syncState('restaurantes/oconnells/mesas/-Kti1MOdTgkw0HwEH7Bh/pedidos', {
+    base.syncState('restaurantes/oconnells/mesas/' + this.props.mesaKey + '/pedidos', {
       context: this,
       state: 'cuenta',
       asArray: true,
 
     });
 
-    base.syncState('restaurantes/oconnells/mesas/-Kti1MOdTgkw0HwEH7Bh/estadoMesa', {
+    base.syncState('restaurantes/oconnells/mesas/' + this.props.mesaKey + '/estadoMesa', {
       context: this,
       state: 'estadoMesa',
       asArray: false,
@@ -71,6 +71,8 @@ export default class Pestana extends Component {
     if (this.state.value === 0) {
       return (
         <Menu
+          numeroMesa={this.props.numeroMesa}
+          mesaKey= {this.props.mesaKey}
           irACuenta = {this.irACuenta.bind(this)}
           estadoMesa={this.state.estadoMesa}
           menu={categoriasBebidasOrdenadas} />
@@ -78,14 +80,18 @@ export default class Pestana extends Component {
     }
     if (this.state.value === 1) {
 
-      return (<Menu
-          irACuenta = {this.irACuenta.bind(this)}
+      return (
+        <Menu
+        numeroMesa={this.props.numeroMesa}
+        mesaKey= {this.props.mesaKey}
+        irACuenta = {this.irACuenta.bind(this)}
         estadoMesa={this.state.estadoMesa}
-        menu={categoriasComidasOrdenadas}/>)
+        menu= {categoriasComidasOrdenadas }/>
+    )
     } else {
 
       return (
-        <Cuenta estadoMesa={this.state.estadoMesa} cuenta={this.state.cuenta}/>
+        <Cuenta mesaKey={this.props.mesaKey} estadoMesa={this.state.estadoMesa} cuenta={this.state.cuenta}/>
       )
     }
 
