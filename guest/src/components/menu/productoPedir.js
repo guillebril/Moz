@@ -106,7 +106,7 @@ export default class MenuProductoPedir extends Component {
 			</ListItem>
 
 			<ListItem>
-				<TextField name='comentario' onChange={this.handleChange} label="Comentarios" multiline
+				<TextField name='comentario' onChange={this.handleChange} label="Comments" multiline
 				fullWidth margin="normal"/>
 			</ListItem>
 
@@ -119,7 +119,7 @@ export default class MenuProductoPedir extends Component {
 		</List>
 
 		<Button raised color="primary" onClick={()=> {this.agregarEnCuenta() ; this.props.handleCloseConSnackbar()}} style={{ height: '45px', width: '100%'}}>
-			<Typography type='title'> Pedir {this.state.cantidad} (${this.state.totalModal})</Typography>
+			<Typography type='title'> Place {this.state.cantidad} {this.state.cantidad > 1 ?'orders' : 'order' } (${this.state.totalModal})</Typography>
 		</Button>
 	</Dialog>
 

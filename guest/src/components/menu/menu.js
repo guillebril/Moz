@@ -51,7 +51,6 @@ export default class Menu extends Component {
 		<div style={{color: colorSegunEstadoMesa}}>
 
 			{this.props.menu[0] === undefined  ?
-
 				<div style={{margin:'auto', width: '50px', marginTop:'100px'}}>
 					<CircularProgress size={50} />
 				</div>

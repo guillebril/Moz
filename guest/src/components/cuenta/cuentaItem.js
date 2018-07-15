@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import ItemEstado from './itemEstado'
 export default class CuentaItem extends Component {
-	constructor( props ) {
-		super( props )
-		this.state = {};
-	}
+  constructor(props) {
+    super(props)
+    this.state = {};
+  }
 
-	render( ) {
-		var t = new Date(this.props.horario)
-		var horas = t.getHours()
-		var minutos = ('0' + t.getMinutes()).slice(-2)
+  render() {
+    var t = new Date(this.props.horario)
+    var horas = t.getHours()
+    var minutos = ('0' + t.getMinutes()).slice(-2)
 
-		return (
-			<div style={{display: 'flex',
+    return (
+      <div style={{display: 'flex',
 				justifyContent: 'space-between',
 				padding: '5px 20px 5px 10px' ,
 
@@ -34,10 +34,10 @@ export default class CuentaItem extends Component {
 						</div>
 						<div style={{display:'flex', paddingTop: '10px', fontSize: '16px', fontWeight: '600', alignItems: 'center'}}>
 							<div>${this.props.total}</div>
-							<div><ItemEstado estado={this.props.estado} llave={this.props.llave}/></div>
+							<div><ItemEstado mesaKey={this.props.mesaKey} estado={this.props.estado} llave={this.props.llave}/></div>
 						</div>
 
 			</div>
-		)
-	}
+    )
+  }
 }

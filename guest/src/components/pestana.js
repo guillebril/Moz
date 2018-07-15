@@ -87,7 +87,7 @@ export default class Pestana extends Component {
         irACuenta = {this.irACuenta.bind(this)}
         estadoMesa={this.state.estadoMesa}
         menu= {categoriasComidasOrdenadas }/>
-    )
+      )
     } else {
 
       return (
@@ -109,9 +109,9 @@ export default class Pestana extends Component {
 					onChange={this.handleChange}
 					showLabels={true}
 					style={{position: 'fixed', bottom: '0', width: '100%', boxShadow: '-1px 7px 20px 0px'}}>
-					<BottomNavigationButton style={{display: 'grid'}} label="Bebidas" icon={<LocalDrink />}/>
-					<BottomNavigationButton style={{display: 'grid'}} label="Comidas" icon={<LocalDining/>} />
-					<BottomNavigationButton style={{display: 'grid'}} label="Cuenta" icon={<ListIcon />} />
+					<BottomNavigationButton style={{display: 'grid'}} label="Drinks" icon={<LocalDrink />}/>
+					<BottomNavigationButton style={{display: 'grid'}} label="Food" icon={<LocalDining/>} />
+					<BottomNavigationButton style={{display: 'grid'}} label="Bill" icon={<ListIcon />} />
 					</BottomNavigation>
 			</div>
     );

@@ -61,7 +61,7 @@ export default class Landing extends Component {
                       <div id="campoCodigo">
                         <FormControl>
                           <InputLabel id="labelCodigo"
-                            htmlFor="name-simple">Codigo de mesa</InputLabel>
+                            htmlFor="name-simple">Table code</InputLabel>
                           <Input id="codigo" value={this.state.valorCodigo} onChange={this.handleChange('valorCodigo')} />
                         </FormControl>
                         </div>

@@ -51,8 +51,6 @@ export default class Menuproducto extends Component {
 						<div className='producto_item_nombre'>{this.props.producto.nombre}</div>
 						<div className='producto_item_descripcion'>{this.props.producto.descripcion}</div>
 					</div>
-
-
 				<div className='producto_item_precio'>${this.props.producto.precio}</div>
 					<div>
 
