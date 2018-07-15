@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import base from '../../rebase'
 import Button from 'material-ui/Button';
 import Dialog from 'material-ui/Dialog';
-import List, { ListItem, ListItemText } from 'material-ui/List';
+import List, {ListItem, ListItemText} from 'material-ui/List';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import IconButton from 'material-ui/IconButton';
@@ -26,7 +26,7 @@ export default class MenuProductoPedir extends Component {
   }
 
   handleChange = event => {
-    this.setState({ comentario: event.target.value });
+    this.setState({comentario: event.target.value});
   };
 
   onTouchTapRestar = (event) => {
@@ -62,68 +62,71 @@ export default class MenuProductoPedir extends Component {
         total: this.state.totalModal,
         numeroMesa: this.props.numeroMesa,
 
-        estado: 'Pedido',
-
-      },
+        estado: 'Pedido'
+      }
     })
 
   }
 
   hacerTransition = (props) => {
-    return <Slide direction="up" {...props} />;
+    return <Slide direction="up" {...props}/>;
   }
 
   render() {
 
-    return (
+    return (<Dialog fullScreen="fullScreen" open={this.props.open} onRequestClose={this.props.handleClose} transition={this.hacerTransition}>
 
-      <Dialog fullScreen open={this.props.open}
-		onRequestClose={this.props.handleClose}
-		transition={this.hacerTransition}>
+      <AppBar style={{
+          position: 'relative',
+          backgroundColor: '#F44336'
+        }}>
+        <Toolbar>
+          <Typography type="title" style={{
+              'WebkitFontSmoothing' : 'antialiased',
+              color: '#fff',
+              flex: '1'
+            }} color="inherit">
+            {this.props.producto.nombre}
+          </Typography>
 
-		<AppBar style={{ position: 'relative',backgroundColor: '#F44336'}}>
-			<Toolbar>
-				<Typography type="title" style={{ 'WebkitFontSmoothing': 'antialiased',
-				color: '#fff', flex: '1'}}
-				color="inherit">
-					{this.props.producto.nombre}
-				</Typography>
+          <IconButton style={{
+              color: '#fff'
+            }} onClick={this.props.handleClose} aria-label="Close">
+            <CloseIcon/>
+          </IconButton>
 
+        </Toolbar>
+      </AppBar>
 
-				<IconButton style={{ color: '#fff'}} onClick={this.props.handleClose} aria-label="Close">
-					<CloseIcon/>
-				</IconButton>
+      <List>
+        <ListItem>
+          <ListItemText primary={this.props.producto.nombre} secondary={this.props.producto.descripcion}/>
+          <Typography type='title'>
+            ${this.props.producto.precio}
+          </Typography>
+        </ListItem>
 
-			</Toolbar>
-		</AppBar>
+        <ListItem>
+          <TextField name='comentario' onChange={this.handleChange} label="Comentarios" multiline="multiline" fullWidth="fullWidth" margin="normal"/>
+        </ListItem>
 
-		<List>
-			<ListItem>
-				<ListItemText primary={this.props.producto.nombre} secondary={this.props.producto.descripcion}/>
-				<Typography type='title'>
-					${this.props.producto.precio}
-				</Typography>
-			</ListItem>
+        <ListItem>
+          <MenuProductoContador cantidad={this.state.cantidad} onTouchTapRestar={this.onTouchTapRestar} onTouchTapSumar={this.onTouchTapSumar}/>
+        </ListItem>
+      </List>
 
-			<ListItem>
-				<TextField name='comentario' onChange={this.handleChange} label="Comments" multiline
-				fullWidth margin="normal"/>
-			</ListItem>
-
-			<ListItem>
-				<MenuProductoContador
-					cantidad={this.state.cantidad}
-					onTouchTapRestar={this.onTouchTapRestar}
-					onTouchTapSumar={this.onTouchTapSumar}/>
-			</ListItem>
-		</List>
-
-		<Button raised color="primary" onClick={()=> {this.agregarEnCuenta() ; this.props.handleCloseConSnackbar()}} style={{ height: '45px', width: '100%'}}>
-			<Typography type='title'> Place {this.state.cantidad} {this.state.cantidad > 1 ?'orders' : 'order' } (${this.state.totalModal})</Typography>
-		</Button>
-	</Dialog>
-
-    )
+      <Button raised="raised" color="primary" onClick={() => {
+          this.agregarEnCuenta();
+          this.props.handleCloseConSnackbar()
+        }} style={{
+          height: '45px',
+          width: '100%'
+        }}>
+        <Typography type='title'>
+          Pedir {this.state.cantidad}
+          (${this.state.totalModal})</Typography>
+      </Button>
+    </Dialog>)
   }
 
 }

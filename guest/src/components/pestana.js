@@ -1,10 +1,10 @@
 import '../App.css';
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import base from '../rebase'
 import AppBarra from './appBarra'
 
-import BottomNavigation, { BottomNavigationButton } from 'material-ui/BottomNavigation';
-import { LocalDining, LocalDrink } from 'material-ui-icons';
+import BottomNavigation, {BottomNavigationButton} from 'material-ui/BottomNavigation';
+import {LocalDining, LocalDrink} from 'material-ui-icons';
 import ListIcon from 'material-ui-icons/List';
 import Menu from './menu/menu';
 import Cuenta from './cuenta/cuenta'
@@ -16,15 +16,15 @@ export default class Pestana extends Component {
     bebidas: [],
     comidas: [],
     cuenta: {},
-    estadoMesa: '',
+    estadoMesa: ''
   };
 
   handleChange = (event, value) => {
-    this.setState({ value });
+    this.setState({value});
   };
 
   irACuenta = () => {
-    this.setState({ value: 2 });
+    this.setState({value: 2});
   }
 
   componentDidMount() {
@@ -34,7 +34,7 @@ export default class Pestana extends Component {
       asArray: true,
       queries: {
         orderByChild: 'tipoCategoria',
-        equalTo: 'Comidas',
+        equalTo: 'Comidas'
       }
 
     });
@@ -45,22 +45,20 @@ export default class Pestana extends Component {
       asArray: true,
       queries: {
         orderByChild: 'tipoCategoria',
-        equalTo: 'Bebidas',
-      },
-
+        equalTo: 'Bebidas'
+      }
     });
 
     base.syncState('restaurantes/oconnells/mesas/' + this.props.mesaKey + '/pedidos', {
       context: this,
       state: 'cuenta',
-      asArray: true,
-
+      asArray: true
     });
 
     base.syncState('restaurantes/oconnells/mesas/' + this.props.mesaKey + '/estadoMesa', {
       context: this,
       state: 'estadoMesa',
-      asArray: false,
+      asArray: false
     });
   }
 
@@ -69,52 +67,43 @@ export default class Pestana extends Component {
     const categoriasBebidasOrdenadas = [].concat(this.state.bebidas).sort((a, b) => a.pos > b.pos)
 
     if (this.state.value === 0) {
-      return (
-        <Menu
-          numeroMesa={this.props.numeroMesa}
-          mesaKey= {this.props.mesaKey}
-          irACuenta = {this.irACuenta.bind(this)}
-          estadoMesa={this.state.estadoMesa}
-          menu={categoriasBebidasOrdenadas} />
-      )
+      return (<Menu numeroMesa={this.props.numeroMesa} mesaKey={this.props.mesaKey} irACuenta={this.irACuenta.bind(this)} estadoMesa={this.state.estadoMesa} menu={categoriasBebidasOrdenadas}/>)
     }
     if (this.state.value === 1) {
 
-      return (
-        <Menu
-        numeroMesa={this.props.numeroMesa}
-        mesaKey= {this.props.mesaKey}
-        irACuenta = {this.irACuenta.bind(this)}
-        estadoMesa={this.state.estadoMesa}
-        menu= {categoriasComidasOrdenadas }/>
-      )
+      return (<Menu numeroMesa={this.props.numeroMesa} mesaKey={this.props.mesaKey} irACuenta={this.irACuenta.bind(this)} estadoMesa={this.state.estadoMesa} menu={categoriasComidasOrdenadas}/>)
     } else {
 
-      return (
-        <Cuenta mesaKey={this.props.mesaKey} estadoMesa={this.state.estadoMesa} cuenta={this.state.cuenta}/>
-      )
+      return (<Cuenta mesaKey={this.props.mesaKey} estadoMesa={this.state.estadoMesa} cuenta={this.state.cuenta}/>)
     }
 
   }
 
   render() {
-    return (
-      <div>
-        <AppBarra/>
-				<div style={{marginBottom: '64px'}}>
-					{this.ventana()}
-				</div>
-				<BottomNavigation
-					value={this.state.value}
-					onChange={this.handleChange}
-					showLabels={true}
-					style={{position: 'fixed', bottom: '0', width: '100%', boxShadow: '-1px 7px 20px 0px'}}>
-					<BottomNavigationButton style={{display: 'grid'}} label="Drinks" icon={<LocalDrink />}/>
-					<BottomNavigationButton style={{display: 'grid'}} label="Food" icon={<LocalDining/>} />
-					<BottomNavigationButton style={{display: 'grid'}} label="Bill" icon={<ListIcon />} />
-					</BottomNavigation>
-			</div>
-    );
+    return (<div>
+      <AppBarra/>
+      <div style={{
+          marginBottom: '64px'
+        }}>
+        {this.ventana()}
+      </div>
+      <BottomNavigation value={this.state.value} onChange={this.handleChange} showLabels={true} style={{
+          position: 'fixed',
+          bottom: '0',
+          width: '100%',
+          boxShadow: '-1px 7px 20px 0px'
+        }}>
+        <BottomNavigationButton style={{
+            display: 'grid'
+          }} label="Bebidas" icon={<LocalDrink />}/>
+        <BottomNavigationButton style={{
+            display: 'grid'
+          }} label="Comidas" icon={<LocalDining/>}/>
+        <BottomNavigationButton style={{
+            display: 'grid'
+          }} label="Cuenta" icon={<ListIcon />}/>
+      </BottomNavigation>
+    </div>);
   }
 
 }
