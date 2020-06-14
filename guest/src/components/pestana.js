@@ -6,7 +6,7 @@ import AppBarra from "./appBarra";
 import BottomNavigation, {
   BottomNavigationButton,
 } from "material-ui/BottomNavigation";
-import { LocalDining, LocalDrink } from "material-ui-icons";
+import { Dns, Kitchen, ShoppingCart } from "material-ui-icons";
 import ListIcon from "material-ui-icons/List";
 import Menu from "./menu/menu";
 import Cuenta from "./cuenta/cuenta";
@@ -127,30 +127,31 @@ export default class Pestana extends Component {
           style={{
             position: "fixed",
             bottom: "0",
+            height: "70px",
             width: "100%",
-            boxShadow: "-1px 7px 20px 0px",
+            boxShadow: "-1px 7px 10px 0px",
           }}
         >
           <BottomNavigationButton
             style={{
               display: "grid",
             }}
-            label="Bebidas"
-            icon={<LocalDrink />}
+            label="Para Heladera"
+            icon={<Kitchen />}
           />
           <BottomNavigationButton
             style={{
               display: "grid",
             }}
-            label="Comidas"
-            icon={<LocalDining />}
+            label="Para Alacena"
+            icon={<Dns />}
           />
           <BottomNavigationButton
             style={{
               display: "grid",
             }}
-            label="Cuenta"
-            icon={<ListIcon />}
+            label="Carrito"
+            icon={<ShoppingCart />}
           />
         </BottomNavigation>
       </div>
