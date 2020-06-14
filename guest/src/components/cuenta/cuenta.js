@@ -34,6 +34,7 @@ export default class Cuenta extends Component {
           mesaKey={this.props.mesaKey}
           estadoMesa={this.props.estadoMesa}
           totalCuenta={totalCuenta}
+          handleFinalizarPedido={this.props.handleFinalizarPedido}
         />
       </div>
     );

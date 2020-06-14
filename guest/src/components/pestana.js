@@ -103,6 +103,7 @@ export default class Pestana extends Component {
           mesaKey={this.props.mesaKey}
           estadoMesa={this.state.estadoMesa}
           cuenta={this.state.cuenta}
+          handleFinalizarPedido={this.props.handleFinalizarPedido}
         />
       );
     }

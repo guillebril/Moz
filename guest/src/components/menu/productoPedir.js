@@ -63,7 +63,6 @@ export default class MenuProductoPedir extends Component {
           horario: etiquetaTiempo + "",
           total: this.state.totalModal,
           numeroMesa: this.props.numeroMesa,
-
           estado: "Pedido",
         },
       }
@@ -122,14 +121,20 @@ export default class MenuProductoPedir extends Component {
             <Typography type="title">${this.props.producto.precio}</Typography>
           </ListItem>
           <ListItem>
-            <img
+            <div
               style={{
+                height: "250px",
                 marginRight: "auto",
                 marginLeft: "auto",
-                maxWidth: "250px",
               }}
-              src={this.props.producto.img}
-            />
+            >
+              <img
+                style={{
+                  maxWidth: "250px",
+                }}
+                src={this.props.producto.img}
+              />
+            </div>
           </ListItem>
           <ListItem>
             <TextField

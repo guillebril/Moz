@@ -26,6 +26,7 @@ class AlertPedirCuenta extends React.Component {
         },
       })
       .then(() => {
+        this.props.handleFinalizarPedido();
         window.location.href = `whatsapp://send?text=Hola, ya realice mi pedido. Quisiera coordinar la entrega y forma de pago. El codigo de mi pedido es: ${this.props.mesaKey}&phone=543413662745`;
         //Router.transitionTo('dashboard');
       })

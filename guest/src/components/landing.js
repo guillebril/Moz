@@ -4,6 +4,7 @@ import base from "../rebase";
 import logo from "../media/logoBlanco.png";
 import Pestana from "./pestana";
 import Bienvenido from "./bienvenido";
+import Checkout from "./checkout";
 import Input, { InputLabel } from "material-ui/Input";
 import { FormControl, FormHelperText } from "material-ui/Form";
 
@@ -17,6 +18,15 @@ export default class Landing extends Component {
       mesa: [],
     };
   }
+
+  handleFinalizarPedido = () => {
+    this.setState(
+      { mesaKey: "Pedido Finalizado" }
+      //, () => {
+      //  localStorage.removeItem("mesaKey");
+      //}
+    );
+  };
 
   handleCrearMesa() {
     var valorPush = base.push("restaurantes/oconnells/mesas", {
@@ -43,37 +53,18 @@ export default class Landing extends Component {
     }
   };
 
-  handleChange = (name) => (event) => {
-    this.setState({ [name]: event.target.value });
-
-    if (event.target.value.length >= 4) {
-      base.bindToState("restaurantes/oconnells/mesas", {
-        context: this,
-        state: "mesa",
-        asArray: true,
-        keepKeys: true,
-        queries: {
-          orderByChild: "codigoMesa",
-          equalTo: event.target.value,
-        },
-      });
-
-      setTimeout(() => {
-        console.log("ejecuto");
-        this.handleEntrarMesa();
-      }, 500);
-    }
-  };
-
   render() {
     if (this.state.mesaKey === false) {
       return <Bienvenido handleCrearMesa={this.handleCrearMesa} />;
+    } else if (this.state.mesaKey === "Pedido Finalizado") {
+      return <Checkout />;
     } else {
       return (
         <Pestana
           mesaKey={this.state.mesaKey}
-          codigoMesa="" //{this.state.mesa[0].codigoMesa}
-          numeroMesa="" //{this.state.mesa[0].numero}
+          codigoMesa=""
+          numeroMesa=""
+          handleFinalizarPedido={this.handleFinalizarPedido}
         />
       );
     }

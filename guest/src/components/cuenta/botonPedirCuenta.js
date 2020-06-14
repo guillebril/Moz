@@ -53,6 +53,7 @@ export default class BotonPedirCuenta extends Component {
           totalCuenta={this.props.totalCuenta}
           mesaKey={this.props.mesaKey}
           handleAlertClose={this.handleAlertClose}
+          handleFinalizarPedido={this.props.handleFinalizarPedido}
         />
       </div>
     );
