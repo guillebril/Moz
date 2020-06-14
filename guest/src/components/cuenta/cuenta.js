@@ -21,7 +21,7 @@ export default class Cuenta extends Component {
 
     //esto ya devuelve el total de la cuenta:
     var totalCuenta = pedidosFiltrados
-      .filter((item) => item.estado === "aceptado")
+      .filter((item) => item.estado === "Pedido")
       .map((item, index) => item.total)
       .reduce((a, b) => Number(a) + Number(b), 0);
 

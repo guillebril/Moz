@@ -11,6 +11,7 @@ import Typography from "material-ui/Typography";
 import Slide from "material-ui/transitions/Slide";
 import TextField from "material-ui/TextField";
 import MenuProductoContador from "./productoPedirContador";
+import { Autorenew } from "material-ui-icons";
 
 export default class MenuProductoPedir extends Component {
   constructor(props) {
@@ -54,7 +55,7 @@ export default class MenuProductoPedir extends Component {
         data: {
           producto: this.props.producto.nombre,
           descripcion: this.props.producto.descripcion,
-          usuario: base.initializedApp.auth().currentUser.uid,
+          //usuario: base.initializedApp.auth().currentUser.uid,
           tamaño: "",
           mesaKey: this.props.mesaKey,
           cantidad: this.state.cantidad,
@@ -120,7 +121,16 @@ export default class MenuProductoPedir extends Component {
             />
             <Typography type="title">${this.props.producto.precio}</Typography>
           </ListItem>
-
+          <ListItem>
+            <img
+              style={{
+                marginRight: "auto",
+                marginLeft: "auto",
+                maxWidth: "250px",
+              }}
+              src={this.props.producto.img}
+            />
+          </ListItem>
           <ListItem>
             <TextField
               name="comentario"

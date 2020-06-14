@@ -6,69 +6,68 @@
 }
 
 .producto_item {
+  display: grid;
+  grid-template-columns: 90px auto 50px;
+  grid-template-areas:
+    "img nombre precio"
+    "img descripcion precio";
+
   flex-wrap: wrap;
-  display: flex;
   font-size: 15px;
-  justify-content: space-between;
   align-items: center;
   padding: 8px;
   border-bottom: 1px solid #ddd;
 }
 
-.producto_item_cont1{
-  flex: 7;
+.producto_item_img {
+  width: 90px;
+  grid-area: img;
 }
-
 .producto_item_nombre {
+  grid-area: nombre;
   font-weight: 500;
-  flex-basis: 90%;
+  align-self: flex-end;
   padding-bottom: 5px;
   padding-top: 5px;
 }
 
-
 .producto_item_descripcion {
-  flex-basis: 75%;
+  grid-area: descripcion;
   color: #757575;
   padding-bottom: 5px;
   font-size: 13px;
+  align-self: baseline;
 }
 
 .producto_item_precio {
+  grid-area: precio;
   font-size: 15px;
-  flex:1;
-  padding-left: 25px;
-  align-self: center;
+  padding-left: 5px;
 }
 
-
-.categoria_titulo{
-padding-top: 15px;
-padding-bottom: 15px;
-padding-left: 15px;
-letter-spacing: 0.5px;
--webkit-font-smoothing: subpixel-antialiased;
-text-transform: uppercase;
-color: #555;
-background-color: #eee;
+.categoria_titulo {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 15px;
+  letter-spacing: 0.5px;
+  -webkit-font-smoothing: subpixel-antialiased;
+  text-transform: uppercase;
+  color: #555;
+  background-color: #eee;
 }
 
-
-#codigo{
+#codigo {
   color: #fff;
   font-size: 45px;
-  width:190px
+  width: 190px;
 }
 
-
-#campoCodigo label{
+#campoCodigo label {
   font-size: 25px;
-  color: #fff
+  color: #fff;
 }
 
-
-
-#codigo  .MuiInput-underline-23:before {
-    height: 2px;
-    background-color: #fff;
+#codigo .MuiInput-underline-23:before {
+  height: 2px;
+  background-color: #fff;
 }

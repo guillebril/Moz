@@ -22,7 +22,7 @@ export default class BotonPedirCuenta extends Component {
 
   render() {
     let botonDisabled = this.props.estadoMesa === "abierta" ? false : true;
-    let textoBoton = botonDisabled ? "TOTAL: " : "PEDIR LA CUENTA";
+    let textoBoton = botonDisabled ? "TOTAL: " : "FINALIZAR PEDIDO";
 
     return (
       <div
@@ -31,24 +31,6 @@ export default class BotonPedirCuenta extends Component {
           margin: "10px",
         }}
       >
-        <div
-          style={{
-            textAlign: "center",
-            color: "#ccc",
-            margin: "15px",
-            marginBottom: "30px",
-          }}
-        >
-          Cuando veas el
-          <DoneAll
-            style={{
-              width: "20px",
-              paddingLeft: "6px",
-              color: "#1CD686",
-            }}
-          />
-          quiere decir que estamos preparando tu pedido
-        </div>
         <Button
           disabled={botonDisabled}
           raised="raised"
@@ -63,7 +45,7 @@ export default class BotonPedirCuenta extends Component {
               fontSize: "16px",
             }}
           >
-            {textoBoton}(${this.props.totalCuenta})
+            {textoBoton} (${this.props.totalCuenta})
           </div>
         </Button>
         <AlertPedirCuenta

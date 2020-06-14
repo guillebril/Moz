@@ -41,34 +41,33 @@ export default class Menuproducto extends Component {
     return (
       <Link to={"/" + this.props.producto.key}>
         <div className="producto_item" onClick={this.handleOpen}>
-          <div className="producto_item_cont1">
-            <div className="producto_item_nombre">
-              {this.props.producto.nombre}
-            </div>
-            <div className="producto_item_descripcion">
-              {this.props.producto.descripcion}
-            </div>
+          <img className="producto_item_img" src={this.props.producto.img} />
+          <div className="producto_item_nombre">
+            {this.props.producto.nombre}
+          </div>
+          <div className="producto_item_descripcion">
+            {this.props.producto.descripcion}
           </div>
           <div className="producto_item_precio">
             ${this.props.producto.precio}
           </div>
-          <div>
-            <Route
-              path={"/" + this.props.producto.key}
-              render={() => (
-                <MenuProductoPedir
-                  mesaKey={this.props.mesaKey}
-                  open={this.state.open}
-                  handleOpen={this.handleOpen}
-                  handleClose={this.handleClose}
-                  numeroMesa={this.props.numeroMesa}
-                  handleCloseConSnackbar={this.handleCloseConSnackbar}
-                  onRequestClose={this.handleClose}
-                  producto={this.props.producto}
-                />
-              )}
-            />
-          </div>
+        </div>
+        <div>
+          <Route
+            path={"/" + this.props.producto.key}
+            render={() => (
+              <MenuProductoPedir
+                mesaKey={this.props.mesaKey}
+                open={this.state.open}
+                handleOpen={this.handleOpen}
+                handleClose={this.handleClose}
+                numeroMesa={this.props.numeroMesa}
+                handleCloseConSnackbar={this.handleCloseConSnackbar}
+                onRequestClose={this.handleClose}
+                producto={this.props.producto}
+              />
+            )}
+          />
         </div>
         {this.state.mostrarSnackbar ? (
           <ProductoSnackbar irACuenta={this.props.irACuenta} />

@@ -37,10 +37,6 @@ export default class CuentaItem extends Component {
             {this.props.producto}
           </div>
           <div style={{ color: "#595959", fontSize: "14px" }}>
-            <span style={{ color: "#929292" }}>
-              {" "}
-              {horas + ":" + minutos + " "}{" "}
-            </span>
             {this.props.comentarios}
           </div>
         </div>

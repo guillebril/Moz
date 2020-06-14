@@ -26,6 +26,7 @@ export default class Landing extends Component {
         total: "0",
         fechaHoraIngreso: "",
         estado: "abierta",
+        estadoMesa: "abierta",
       },
     });
     var nuevoKey = valorPush.key;
@@ -70,7 +71,7 @@ export default class Landing extends Component {
     } else {
       return (
         <Pestana
-          mesaKey={this.state.mesakey}
+          mesaKey={this.state.mesaKey}
           codigoMesa="" //{this.state.mesa[0].codigoMesa}
           numeroMesa="" //{this.state.mesa[0].numero}
         />

@@ -10,7 +10,7 @@ class AppBarra extends Component {
         <AppBar position="static" color="primary">
           <Toolbar>
             <Typography type="title" color="inherit">
-              MozApp
+              Chango Natural Market
             </Typography>
           </Toolbar>
         </AppBar>
