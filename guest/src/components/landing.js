@@ -20,12 +20,9 @@ export default class Landing extends Component {
   }
 
   handleFinalizarPedido = () => {
-    this.setState(
-      { mesaKey: "Pedido Finalizado" }
-      //, () => {
-      //  localStorage.removeItem("mesaKey");
-      //}
-    );
+    this.setState({ mesaKey: "Pedido Finalizado" }, () => {
+      localStorage.removeItem("mesaKey");
+    });
   };
 
   handleCrearMesa() {
