@@ -17,7 +17,7 @@ export default class Pestana extends Component {
     bebidas: [],
     comidas: [],
     cuenta: {},
-    estadoMesa: "",
+    estadoMesa: "abierta",
   };
 
   handleChange = (event, value) => {
@@ -87,6 +87,7 @@ export default class Pestana extends Component {
         />
       );
     }
+
     if (this.state.value === 1) {
       return (
         <Menu
@@ -110,6 +111,11 @@ export default class Pestana extends Component {
   };
 
   render() {
+    if (this.state.estadoMesa !== "abierta") {
+      localStorage.removeItem("mesaKey");
+      return (window.location.href = "https://changonatural.web.app");
+    }
+
     return (
       <div>
         <AppBarra />
