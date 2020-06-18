@@ -22,7 +22,7 @@ class AlertPedirCuenta extends React.Component {
     base
       .update("restaurantes/oconnells/mesas/" + this.props.mesaKey + "/", {
         data: {
-          estadoMesa: "cerrada",
+          estadoMesa: "abierta",
         },
       })
       .then(() => {
